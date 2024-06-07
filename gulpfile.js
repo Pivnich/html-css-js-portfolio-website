@@ -102,7 +102,4 @@ gulp.task('assets', function () {
 gulp.task('default', gulp.series('sass', 'script', 'html', 'assets', 'serve'))
 
 // Build task
-gulp.task(
-	'build',
-	gulp.series('sass', 'script', 'html', 'assets', 'minAssetsImages')
-)
+gulp.task('build', gulp.series('sass', 'script', 'html', 'assets'))
