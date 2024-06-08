@@ -10,9 +10,18 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
+			rel="preload"
 			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-			rel="stylesheet"
+			as="style"
+			onload="this.onload=null;this.rel='stylesheet'"
 		/>
+		<noscript>
+			<link
+				href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+				rel="stylesheet"
+				type="text/css"
+			/>
+		</noscript>
 		<meta
 			name="description"
 			content="Max Vulchyn — Digital Designer | Graphic Designer, Video Editor, 3d Artist"
@@ -40,7 +49,7 @@
 								width="100%"
 								height="100%"
 								src="assets/brightness.png"
-								alt=""
+								alt="theme"
 							/>
 						</button>
 					</li>
@@ -80,7 +89,7 @@
 							width="100%"
 							height="100%"
 							src="assets/brightness.png"
-							alt=""
+							alt="theme"
 						/>
 					</button>
 				</li>
@@ -564,7 +573,12 @@
 							/>
 						</div>
 						<div class="swiper-slide">
-							<img src="assets/dndrpl.png" width="100%" height="100%" />
+							<img
+								src="assets/dndrpl.png"
+								alt="dndrpl"
+								width="100%"
+								height="100%"
+							/>
 						</div>
 						<div class="swiper-slide">
 							<video
