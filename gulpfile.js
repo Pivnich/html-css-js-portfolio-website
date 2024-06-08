@@ -29,6 +29,7 @@ gulp.task('script', function () {
 		.src([
 			'node_modules/swiper/swiper-bundle.js',
 			'node_modules/aos/dist/aos.js',
+			'node_modules/lazysizes/lazysizes.min.js',
 		])
 		.pipe(concat('libs.min.js'))
 		.pipe(terser())
