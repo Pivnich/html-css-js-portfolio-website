@@ -440,13 +440,15 @@ section {
 	}
 }
 
-@media screen and (max-width: 768px) {
-	.aos-animate {
-		.anchor {
+.aos-animate {
+	.anchor {
+		top: 40px;
+		@media screen and (max-width: 768px) {
 			top: -48px;
 		}
 	}
 }
+
 .anchor {
 	position: absolute;
 	top: -30px;
