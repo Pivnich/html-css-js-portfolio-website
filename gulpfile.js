@@ -5,6 +5,8 @@ const htmlmin = require('gulp-htmlmin')
 const cleanCSS = require('gulp-clean-css')
 const concat = require('gulp-concat')
 const terser = require('gulp-terser')
+const postcss = require('gulp-postcss')
+const autoprefixer = require('autoprefixer')
 
 gulp.task('sass', function () {
 	gulp
@@ -20,6 +22,7 @@ gulp.task('sass', function () {
 	return gulp
 		.src('src/sass/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
+		.pipe(postcss([autoprefixer()]))
 		.pipe(cleanCSS())
 		.pipe(gulp.dest('dist/css'))
 })
