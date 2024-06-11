@@ -32,6 +32,9 @@ jobs:
       - name: Build project
         run: gulp build
 
+      - name: Create CNAME file
+        run: echo "vulchyn.com" > ./dist/CNAME
+
       - name: List build directory contents
         run: ls -la ./dist  # List contents of the build directory for debugging
 
