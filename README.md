@@ -1,4 +1,8 @@
+
 ### CARD BLOCK
+<details>
+  <summary>Code</summary>
+	
 ```
 <li class="card">
 	<div class="card-image modal-trigger" onclick="openModal(event)">
@@ -46,3 +50,4 @@
 	</div>
 </li>
 ```
+</details>
