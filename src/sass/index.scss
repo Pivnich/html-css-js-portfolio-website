@@ -840,7 +840,7 @@ ul.projects-list {
 			}
 
 			&:hover {
-				cursor: pointer;
+				cursor: zoom-in;
 				opacity: 0.75;
 			}
 
@@ -923,6 +923,9 @@ ul.badges {
 		.modal-img {
 			position: relative;
 			height: 95vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			img {
 				object-fit: contain;
 			}
