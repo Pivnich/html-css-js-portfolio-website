@@ -1,8 +1,8 @@
 :root {
-	--main-bg-color: white;
-	--secondary-bg-color: #eeeeee;
-	--border-color: #c7c7c7;
-	--text-color: rgb(30, 30, 30);
+	--main-bg-color: #fff;
+	--secondary-bg-color: #f5f5f5;
+	--border-color: #d3d3d3;
+	--text-color: #1e1e1e;
 	--text-paragraph: rgb(85, 85, 85);
 	--text-anchor: rgb(30, 30, 30);
 	--text-anchor-hover: rgb(128, 128, 128);
@@ -13,10 +13,10 @@
 	--swiper-pagination-bullet-active: rgb(30, 30, 30);
 
 	.dark {
-		--main-bg-color: rgb(30, 30, 30);
+		--main-bg-color: #1e1e1e;
 		--secondary-bg-color: #252525;
 		--border-color: #404040;
-		--text-color: rgb(245, 245, 245);
+		--text-color: #f5f5f5;
 		--text-paragraph: rgb(210, 210, 210);
 		--text-anchor: rgb(245, 245, 245);
 		--text-anchor-hover: rgb(175, 175, 175);
@@ -840,7 +840,8 @@ ul.projects-list {
 			}
 
 			&:hover {
-				opacity: 0.5;
+				cursor: pointer;
+				opacity: 0.75;
 			}
 
 			&__full {
@@ -868,8 +869,8 @@ ul.projects-list {
 				font-weight: normal;
 
 				img {
-					filter: invert(0.95);
 					width: 18px;
+					height: auto;
 
 					transition: opacity 0.35s ease;
 				}
@@ -893,7 +894,7 @@ ul.badges {
 		font-size: 0.85rem;
 		display: flex;
 		padding: 0.25rem 1rem;
-		border: 1px solid #404040;
+		border: 1px solid var(--btn-border-color);
 		border-radius: 4rem;
 	}
 }
@@ -918,6 +919,28 @@ ul.badges {
 
 	.modal-content {
 		z-index: 1;
+
+		.modal-img {
+			position: relative;
+			height: 95vh;
+			img {
+				object-fit: contain;
+			}
+			a.open-original {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				background: var(--main-bg-color);
+				text-decoration: none;
+				padding: 2px 4px;
+				opacity: 0.75;
+
+				img {
+					width: 12px;
+					height: auto;
+				}
+			}
+		}
 	}
 
 	&.open {
