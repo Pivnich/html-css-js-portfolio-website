@@ -5,7 +5,9 @@
 		<img src="assets/about-pic.jpg" alt="" />
 	</div>
 	<div class="modal-inject">
-		<!-- <div class="modal-img">
+```
+```
+		<div class="modal-img">
 			<img data-src="assets/about-pic.jpg" class="lazyload" />
 			<a
 				class="open-original"
@@ -15,8 +17,10 @@
 				Open original
 				<img src="./assets/external-link.png" class="icon" />
 			</a>
-		</div> -->
+		</div>
+```
 		<!-- or any content -->
+```
 	</div>
 	<div class="card-footer">
 		<ul class="badges">
@@ -26,14 +30,19 @@
 			<li>Notion</li>
 			<li>Motion</li>
 		</ul>
-		<!-- <a class="card-link" href="#" target="_blank">
+```
+```
+		<a class="card-link" href="#" target="_blank">
 			Mobiledesignmuseum
 			<img src="./assets/external-link.png" class="icon" />
-		</a> -->
-		<!-- <h3 class="card-link">
+		</a>
+```
+```
+		<h3 class="card-link">
 			Mobiledesignmuseum
-			<img src="./assets/external-link.png" class="icon" />
-		</h3> -->
+		</h3>
+```
+```
 	</div>
 </li>
 ```
