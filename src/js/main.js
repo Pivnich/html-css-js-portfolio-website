@@ -70,3 +70,26 @@ function toggleThemeHandler() {
 //
 const isDark = localStorage.getItem('theme') === 'dark'
 if (isDark) setTheme(true)
+
+// MODAL
+// To open modal - element with class name "modal-trigger" and onclick="openModal(event)"
+// and sibling element with class name "modal-inject" with needed modal content
+
+function openModal(e) {
+	const modalInjectContainer = e.target.nextSibling
+	const isContent = modalInjectContainer.classList.contains('modal-inject')
+	if (!isContent) return
+
+	const modalContent = modalInjectContainer.innerHTML
+
+	setModalContent(modalContent)
+	toggleModal()
+}
+function setModalContent(content) {
+	const modal = document.getElementById('modal')
+	modal.getElementsByClassName('modal-content')[0].innerHTML = content
+}
+function toggleModal() {
+	const modal = document.getElementById('modal')
+	modal.classList.toggle('open')
+}
