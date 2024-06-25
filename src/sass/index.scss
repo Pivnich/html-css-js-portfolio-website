@@ -442,6 +442,9 @@ section {
 		padding-top: 80px;
 		margin: 0 40px;
 	}
+	@media screen and (max-width: 640px) {
+		margin: 0 16px;
+	}
 }
 
 .aos-animate {
@@ -575,6 +578,9 @@ section {
 		}
 		@media screen and (max-width: 768px) {
 			right: -36px;
+		}
+		@media screen and (max-width: 640px) {
+			right: -16px;
 		}
 	}
 
@@ -794,6 +800,12 @@ section.experience {
 				width: 100%;
 			}
 
+			h3 {
+				@media screen and (max-width: 640px) {
+					font-size: 1.25rem;
+				}
+			}
+
 			.icon {
 				cursor: default;
 			}
@@ -813,6 +825,11 @@ ul.projects-list {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 2rem;
+
+	@media screen and (max-width: 768px) {
+		flex-direction: column;
+		gap: 1.5rem;
+	}
 	.card {
 		width: calc(50% - 1rem);
 		display: flex;
@@ -820,17 +837,24 @@ ul.projects-list {
 		background: var(--secondary-bg-color);
 		border: 1px solid var(--border-color);
 		border-radius: 0.5rem;
-		// padding: 5rem 3rem;
+
+		@media screen and (max-width: 768px) {
+			width: 100%;
+		}
+
 		.card-image {
 			overflow: hidden;
 			background: #ccc;
 			border-top-left-radius: 0.5rem;
 			border-top-right-radius: 0.5rem;
 			width: 100%;
-			min-height: 300px;
-			max-height: 50vh;
+			height: 400px;
 
 			transition: opacity 0.15s ease;
+
+			@media screen and (max-width: 768px) {
+				height: 300px;
+			}
 
 			img {
 				width: 100%;
@@ -864,6 +888,10 @@ ul.projects-list {
 			gap: 1rem;
 			padding: 2rem 1.5rem;
 
+			@media screen and (max-width: 640px) {
+				padding: 1.25rem 1rem;
+			}
+
 			.card-link {
 				font-size: 1.85rem;
 				font-weight: normal;
@@ -879,6 +907,13 @@ ul.projects-list {
 					img {
 						opacity: 0.8;
 					}
+				}
+
+				@media screen and (max-width: 1024px) {
+					font-size: 1.5rem;
+				}
+				@media screen and (max-width: 640px) {
+					font-size: 1.25rem;
 				}
 			}
 		}
@@ -896,6 +931,11 @@ ul.badges {
 		padding: 0.25rem 1rem;
 		border: 1px solid var(--btn-border-color);
 		border-radius: 4rem;
+
+		@media screen and (max-width: 640px) {
+			font-size: 0.7rem;
+			padding: 0.2rem 0.5rem;
+		}
 	}
 }
 
