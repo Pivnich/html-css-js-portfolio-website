@@ -840,7 +840,7 @@ ul.projects-list {
 			}
 
 			&:hover {
-				cursor: pointer;
+				cursor: zoom-in;
 				opacity: 0.75;
 			}
 
@@ -925,6 +925,9 @@ ul.badges {
 			max-height: 95vh;
 			max-width: 90vw;
 			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			img {
 				width: 100%;
 				height: 100%;
