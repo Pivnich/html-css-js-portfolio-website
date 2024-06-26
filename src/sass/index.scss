@@ -477,9 +477,10 @@ section {
 	display: flex;
 	justify-content: center;
 	gap: 5rem;
-	height: calc(100vh - 2rem - 48px - 100px);
+	// height: calc(100vh - 2rem - 48px - 100px);
 	padding-top: 0;
 	min-height: 400px;
+	margin-bottom: 0;
 
 	h2 {
 		margin-bottom: 20px;
