@@ -11,6 +11,7 @@
 	--btn-bg-color-hover: rgb(53, 53, 53);
 	--swiper-pagination-bullet: #171717;
 	--swiper-pagination-bullet-active: rgb(30, 30, 30);
+	--backTop-button-bg: #0000000a;
 
 	.dark {
 		--main-bg-color: #1e1e1e;
@@ -25,6 +26,7 @@
 		--btn-bg-color-hover: rgb(219, 219, 219);
 		--swiper-pagination-bullet: #f0f0f0;
 		--swiper-pagination-bullet-active: rgb(229, 229, 229);
+		--backTop-button-bg: #ffffff17;
 	}
 }
 
@@ -1018,8 +1020,7 @@ ul.badges {
 	align-items: center;
 	justify-content: center;
 
-	background-color: #ffffff17;
-	color: white;
+	background-color: var(--backTop-button-bg);
 
 	opacity: 0;
 	pointer-events: none;
@@ -1034,7 +1035,6 @@ ul.badges {
 	img {
 		margin-top: -3px;
 		transform: rotate(180deg);
-		filter: invert(1);
 		opacity: 0.7;
 	}
 
