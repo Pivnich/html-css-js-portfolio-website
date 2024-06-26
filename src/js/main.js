@@ -93,3 +93,28 @@ function toggleModal() {
 	const modal = document.getElementById('modal')
 	modal.classList.toggle('open')
 }
+
+// BACK TO TOP
+const backToTopBtn = document.getElementById('backToTop')
+
+window.onscroll = function () {
+	scrollFunction()
+}
+
+function scrollFunction() {
+	const { innerHeight } = window
+	if (
+		document.body.scrollTop > innerHeight / 2 ||
+		document.documentElement.scrollTop > innerHeight / 2
+	) {
+		backToTopBtn.classList.add('show')
+	} else {
+		backToTopBtn.classList.remove('show')
+	}
+}
+
+function topFunction() {
+	// document.body.scrollTop = 0; // For Safari
+	// document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	window.scrollTo({ top: 0, behavior: 'smooth' })
+}

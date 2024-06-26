@@ -1004,3 +1004,49 @@ ul.badges {
 .modal-inject {
 	display: none;
 }
+
+// BACK TO TOP
+#backToTop {
+	position: fixed;
+	left: 10px;
+	bottom: 10px;
+	width: 65px;
+	height: 65px;
+	border-radius: 50%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #ffffff17;
+	color: white;
+
+	opacity: 0;
+	pointer-events: none;
+
+	transition: opacity 0.5s ease, background-color 0.35s ease;
+
+	&:hover {
+		cursor: pointer;
+		background-color: #ffffff0a;
+	}
+
+	img {
+		margin-top: -3px;
+		transform: rotate(180deg);
+		filter: invert(1);
+		opacity: 0.7;
+	}
+
+	@media screen and (max-width: 640px) {
+		left: 8px;
+		bottom: 8px;
+		width: 40px;
+		height: 40px;
+	}
+
+	&.show {
+		opacity: 1;
+		pointer-events: all;
+	}
+}
