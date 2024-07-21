@@ -19,7 +19,7 @@
 				target="_blank"
 			>
 				Open original
-				<img src="./assets/external-link.png" class="icon" />
+				<img src="./assets/external-link.png" class="icon" alt="open original" />
 			</a>
 		</div>
 ```
@@ -38,7 +38,7 @@
 ```
 		<a class="card-link" href="#" target="_blank">
 			Mobiledesignmuseum
-			<img src="./assets/external-link.png" class="icon" />
+			<img src="./assets/external-link.png" class="icon" alt="open original" />
 		</a>
 ```
 ```
