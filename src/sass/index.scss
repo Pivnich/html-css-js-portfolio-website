@@ -984,23 +984,22 @@ ul.badges {
 
 		.modal-img {
 			position: relative;
-			overflow: hidden;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			img {
 				max-width: 95vw;
-				max-height: 95vh;
+				max-height: calc(95vh - 1.9rem);
 				width: auto;
 				height: auto;
 			}
 			a.open-original {
 				position: absolute;
 				right: 0;
-				bottom: 0;
+				bottom: -1.7rem;
 				background: var(--main-bg-color);
 				text-decoration: none;
-				padding: 2px 4px;
+				padding: 0 4px;
 				opacity: 0.75;
 
 				img {
