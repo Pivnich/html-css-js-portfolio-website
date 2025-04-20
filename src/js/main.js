@@ -67,9 +67,9 @@ function toggleThemeHandler() {
 	localStorage.setItem('theme', isDark ? 'light' : 'dark')
 }
 
-//
-const isDark = localStorage.getItem('theme') === 'dark'
-if (isDark) setTheme(true)
+// uncomment to use dark mode functionality
+// const isDark = localStorage.getItem('theme') === 'dark'
+// if (isDark) setTheme(true)
 
 // MODAL
 // To open modal - element with class name "modal-trigger" and onclick="openModal(event)"
@@ -118,3 +118,52 @@ function topFunction() {
 	// document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 	window.scrollTo({ top: 0, behavior: 'smooth' })
 }
+
+// ACCORDION
+const headers = document.querySelectorAll('.accordion-item-header')
+const arrows = document.querySelectorAll('.accordion-item-arrow')
+
+headers.forEach(function (header) {
+	header.addEventListener('click', function () {
+		const item = this.parentElement
+		const body = item.querySelector('.accordion-item-body')
+
+		if (item.classList.contains('active')) {
+			body.style.maxHeight = null
+			item.classList.remove('active')
+		} else {
+			document
+				.querySelectorAll('.accordion-item')
+				.forEach(function (otherItem) {
+					if (otherItem !== item) {
+						otherItem.classList.remove('active')
+						otherItem.querySelector('.accordion-item-body').style.maxHeight =
+							null
+					}
+				})
+
+			item.classList.add('active')
+			body.style.maxHeight = body.scrollHeight + 'px'
+		}
+	})
+})
+
+arrows.forEach(function (arrow) {
+	arrow.addEventListener('click', function (e) {
+		e.stopPropagation()
+
+		const item = this.closest('.accordion-item')
+		const body = item.querySelector('.accordion-item-body')
+		const header = item.querySelector('.accordion-item-header')
+
+		header.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start',
+		})
+
+		setTimeout(function () {
+			body.style.maxHeight = null
+			item.classList.remove('active')
+		}, 10)
+	})
+})
