@@ -1126,11 +1126,12 @@ ul.badges {
 		transition-delay: unset;
 		transition: max-height 2s ease-out;
 	}
-	.accordion-item-header,
-	.accordion-item-header:hover {
-		filter: grayscale(1);
-		cursor: pointer;
-	}
+}
+
+.accordion-item.active .accordion-item-header,
+.accordion-item-header:hover {
+	filter: grayscale(1);
+	cursor: pointer;
 }
 .accordion-item-title {
 	color: #1e1e1e;
