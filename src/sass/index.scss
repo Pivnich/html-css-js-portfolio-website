@@ -1119,7 +1119,7 @@ ul.badges {
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
 
-		transition: none;
+		transition: filter 0.35s ease;
 	}
 	.accordion-item-body {
 		// transition-delay: 0.25s;
@@ -1128,7 +1128,6 @@ ul.badges {
 	}
 }
 
-.accordion-item.active .accordion-item-header,
 .accordion-item-header:hover {
 	filter: grayscale(1);
 	cursor: pointer;

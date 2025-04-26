@@ -119,6 +119,13 @@ function topFunction() {
 	window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
+function setAllVideosMuted() {
+	const videos = document.getElementsByTagName('video')
+	for (const video of videos) {
+		video.muted = true
+	}
+}
+
 // ACCORDION
 const headers = document.querySelectorAll('.accordion-item-header')
 const arrows = document.querySelectorAll('.accordion-item-arrow')
@@ -131,6 +138,7 @@ headers.forEach(function (header) {
 		if (item.classList.contains('active')) {
 			body.style.maxHeight = null
 			item.classList.remove('active')
+			setAllVideosMuted()
 		} else {
 			document
 				.querySelectorAll('.accordion-item')
@@ -139,6 +147,7 @@ headers.forEach(function (header) {
 						otherItem.classList.remove('active')
 						otherItem.querySelector('.accordion-item-body').style.maxHeight =
 							null
+						setAllVideosMuted()
 					}
 				})
 
@@ -164,6 +173,7 @@ arrows.forEach(function (arrow) {
 		setTimeout(function () {
 			body.style.maxHeight = null
 			item.classList.remove('active')
+			setAllVideosMuted()
 		}, 10)
 	})
 })
