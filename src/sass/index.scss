@@ -1093,7 +1093,9 @@ ul.badges {
 	justify-content: space-between;
 	width: 100%;
 	overflow: hidden;
-	background-size: cover;
+	background-size: 435px, cover;
+	background-position: left, center;
+	background-repeat: no-repeat;
 
 	transition: border-radius 0.35s ease 0.1s, filter 0.35s ease;
 }
@@ -1139,12 +1141,12 @@ ul.badges {
 	padding-right: 94px;
 }
 .accordion-item-title-logo {
-	max-width: 435px;
+	max-width: 300px;
 	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-items: center;
-	padding: 16px 0;
+	padding: 20px 0;
 }
 .accordion-item-title-logo img {
 	object-fit: contain;
