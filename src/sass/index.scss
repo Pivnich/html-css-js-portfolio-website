@@ -1077,6 +1077,10 @@ ul.badges {
 	display: flex;
 	flex-direction: column;
 	gap: 40px;
+
+	@media screen and (max-width: 1024px) {
+		gap: 20px;
+	}
 }
 .accordion-item {
 	display: flex;
@@ -1098,6 +1102,16 @@ ul.badges {
 	background-repeat: no-repeat;
 
 	transition: border-radius 0.35s ease 0.1s, filter 0.35s ease;
+
+	@media screen and (max-width: 1024px) {
+		padding-left: 24px;
+		height: 90px;
+		background-size: 340px 90px, cover;
+	}
+	@media screen and (max-width: 840px) {
+		height: 80px;
+		background-size: 300px 90px, cover;
+	}
 }
 .accordion-header-gradient {
 	position: absolute;
@@ -1139,6 +1153,20 @@ ul.badges {
 	font-weight: 700;
 	font-size: 46px;
 	padding-right: 94px;
+
+	@media screen and (max-width: 1280px) {
+		font-size: 32px;
+		padding-right: 64px;
+	}
+	@media screen and (max-width: 1024px) {
+		padding-right: 24px;
+	}
+	@media screen and (max-width: 840px) {
+		font-size: 28px;
+		text-align: right;
+		padding-left: 16px;
+		line-height: 32px;
+	}
 }
 .accordion-item-title-logo {
 	max-width: 300px;
@@ -1147,11 +1175,16 @@ ul.badges {
 	align-items: center;
 	justify-items: center;
 	padding: 20px 0;
-}
-.accordion-item-title-logo img {
-	object-fit: contain;
-	max-width: 100%;
-	max-height: 100%;
+
+	img {
+		object-fit: contain;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	@media screen and (max-width: 840px) {
+		max-width: 150px;
+	}
 }
 .accordion-item-body {
 	max-height: 0;
@@ -1172,10 +1205,18 @@ ul.badges {
 	border-bottom-right-radius: 24px;
 
 	background-color: #2b2b2b;
+
+	@media screen and (max-width: 1490px) {
+		padding-left: 48px;
+		padding-right: 48px;
+	}
+	@media screen and (max-width: 840px) {
+		padding-top: 32px;
+		gap: 24px;
+		padding-bottom: 48px;
+		font-size: 20px;
+	}
 }
-// .accordion-item.active .accordion-item-body-content {
-// 	display: block;
-// }
 .accordion-media {
 	display: flex;
 	flex-direction: column;
@@ -1186,7 +1227,8 @@ ul.badges {
 	display: flex;
 	align-items: center;
 	justify-items: center;
-	width: 1100px;
+	width: 100%;
+	max-width: 1100px;
 	height: 630px;
 	border-radius: 24px;
 	// background-color: #fbff00;
@@ -1197,6 +1239,11 @@ ul.badges {
 		max-height: 100%;
 		border-radius: 24px;
 	}
+
+	@media screen and (max-width: 1200px) {
+		width: 100%;
+		height: auto;
+	}
 }
 .accordion-item-arrow {
 	text-align: center;
@@ -1205,5 +1252,14 @@ ul.badges {
 		opacity: 0.75;
 		transition: opacity 0.35s ease;
 		cursor: pointer;
+	}
+
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	@media screen and (max-width: 840px) {
+		height: 24px;
 	}
 }
