@@ -121,8 +121,17 @@ function topFunction() {
 
 function setAllVideosMuted() {
 	const videos = document.getElementsByTagName('video')
+	const accordioniFrames = document
+		.querySelector('.accordion-wrapper')
+		.getElementsByTagName('iframe')
 	for (const video of videos) {
 		video.muted = true
+	}
+	for (const iframe of accordioniFrames) {
+		iframe.contentWindow.postMessage(
+			'{"event":"command","func":"' + 'stopVideo' + '","args":""}',
+			'*'
+		)
 	}
 }
 
