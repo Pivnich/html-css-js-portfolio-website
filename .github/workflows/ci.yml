@@ -1,4 +1,4 @@
-name: CI
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -8,38 +8,63 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Required for pushing to branches
+  contents: write
   pull-requests: write
   issues: write
   repository-projects: write
+  id-token: write
+  pages: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      CI: 'true'
+      
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+        
+      # - name: Create CNAME file
+      #   run: echo "vulchyn.com" > ./CNAME
+      
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'  # Use the Node.js version you need
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: '18'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: gulp build
-
-      - name: Create CNAME file
-        run: echo "vulchyn.com" > ./dist/CNAME
-
-      - name: List build directory contents
-        run: ls -la ./dist  # List contents of the build directory for debugging
-
+      # - name: Install dependencies
+      #   run: npm ci
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # Ensure this path matches your build output
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+
+
+
+
+      # - name: Build project
+      #   run: npm run build
+
+      # - name: Create CNAME file
+      #   run: echo "" > ./dist/CNAME
+
+      # - name: List build directory contents
+      #   run: ls -la ./dist
+
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./dist

@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import DesktopMenu from '../components/desktop-menu.astro'
+import MobileMenu from '../components/mobile-menu.astro'
+import ProfileSection from '../components/sections/profile.astro'
+import SelectedProjectsSection from '../components/sections/selected-projects.astro'
+import ProjectsSection from '../components/sections/projects.astro'
+import RecentProjectsSection from '../components/sections/recent-projects.astro'
+import AboutSection from '../components/sections/about.astro'
+import ExperienceSection from '../components/sections/experience.astro'
+import ContactsSection from '../components/sections/contacts.astro'
+import Modal from '../components/modal.astro'
+import BackToTop from '../components/back-to-top.astro'
+
+import data from '../data/projects.json'
+---
+
+<BaseLayout>
+	<DesktopMenu />
+	<MobileMenu />
+	<ProfileSection />
+	{data.sections.map((section) => {
+		switch (section.type) {
+			case 'accordion':
+				return (
+					<SelectedProjectsSection
+						title={section.title}
+						subtitle={section.subtitle}
+						items={section.items}
+					/>
+			)
+			case 'sliders':
+				return (
+					<ProjectsSection
+							items={section.items}
+					/>
+			)
+			case 'projects':
+				return (
+					<RecentProjectsSection
+						title={section.title}
+						subtitle={section.subtitle}
+						items={section.projects}
+					/>
+			)
+			case 'about':
+				return (
+					<AboutSection
+						title={section.title}
+						subtitle={section.subtitle}
+						about={section.about}
+					/>
+			)
+			case 'checkmarks-list':
+				return (
+					<ExperienceSection
+						title={section.title}
+						subtitle={section.subtitle}
+						lists={section.lists}
+					/>
+			)
+			case 'footer-contacts':
+				return (
+					<ContactsSection
+						title={section.title}
+						email={section.email}
+						telegram={section.telegram}
+						linkedin={section.linkedin}
+						behance={section.behance}
+					/>
+			)
+		}
+	})}
+	<Modal />
+	<BackToTop />
+</BaseLayout>
+
+<script>
+import '../scripts/main.js'
+</script>

@@ -1,0 +1,58 @@
+---
+const { title, email, telegram, linkedin, behance } = Astro.props;
+---
+<section class="contact" data-aos="fade-up" data-aos-offset="150">
+	<div id="contact" class="anchor"></div>
+
+	<div class="container">
+		<h2>{title}</h2>
+		<a
+			href={`mailto:${email}`}
+			target="_blank"
+			class="email"
+		>
+			{email}
+		</a>
+		<div class="social-icons">
+			<a
+				class="icon"
+				href={telegram}
+				target="_blank"
+				title="Telegram"
+			>
+				<img
+					src="assets/social/telegram.png"
+					alt="Telegram"
+					width="100%"
+					height="100%"
+				/>
+			</a>
+			<a
+				class="icon"
+				href={linkedin}
+				target="_blank"
+				title="LinkedIn"
+			>
+				<img
+					src="assets/social/linkedin.png"
+					alt="Linkedin"
+					width="100%"
+					height="100%"
+				/>
+			</a>
+			<a
+				class="icon"
+				href={behance}
+				target="_blank"
+				title="Behance"
+			>
+				<img
+					src="assets/social/behance-logo-0DC7CB7635-seeklogo.com.png"
+					alt="Behance"
+					width="100%"
+					height="100%"
+				/>
+			</a>
+		</div>
+	</div>
+</section>

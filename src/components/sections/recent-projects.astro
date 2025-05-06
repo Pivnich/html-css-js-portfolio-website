@@ -1,0 +1,49 @@
+---
+const { title, subtitle, items } = Astro.props;
+---
+<section class="projects_2" data-aos="fade-up" data-aos-offset="150">
+	<div id="projects_2" class="anchor"></div>
+	<p class="section__text__p1">{subtitle}</p>
+	<h2>{title}</h2>
+	<ul class="projects-list">
+		{items.map((project: any) => (
+			<li class="card">
+				<div class="card-image modal-trigger" >
+					<img src={project.image_preview} alt="" />
+				</div>
+				<div class="modal-inject">
+					<div class="modal-img">
+						<img data-src={project.image} class="lazyload" />
+						<a class="open-original" href={project.image} target="_blank">
+							Open original
+							<img src="./assets/external-link.png" class="icon" />
+						</a>
+					</div>
+				</div>
+				<div class="card-footer">
+					<ul class="badges">
+						{project.skills.map((skill: string) => <li>{skill}</li>)}
+					</ul>
+					{project.link ? (<a
+						class="card-link"
+						href={project.link}
+						target="_blank"
+					>
+						{project.title}
+						<img src="./assets/external-link.png" class="icon" />
+					</a>) : (
+						<h3 class="card-link">{project.title}</h3>
+					)}
+				</div>
+			</li>
+		))}
+	</ul>
+	<img
+		src="assets/arrow.png"
+		alt="Arrow icon"
+		class="icon arrow"
+		onclick="location.href='#about'"
+		width="100%"
+		height="100%"
+	/>
+</section>

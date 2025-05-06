@@ -1,0 +1,68 @@
+---
+const { title, subtitle, items } = Astro.props;
+import { YouTube } from '@astro-community/astro-embed-youtube';
+---
+
+<section class="selected-projects" data-aos="fade-up" data-aos-offset="150">
+	<div id="selected-projects" class="anchor"></div>
+	<p class="section__text__p1">{subtitle}</p>
+	<h2>{title}</h2>
+	<div class="accordion-wrapper">
+		{items?.map((item: any) => (
+			<div class="accordion-item">
+				<div
+					class="accordion-item-header"
+					style={`background-image: url('${item.logo_bg || ''}'), url('assets/selected-projects/case-bg-${item.background}.jpg')`}
+				>
+					<div class="accordion-item-title-logo">
+						<img src={item.logo} alt="logo" />
+					</div>
+					<div class="accordion-item-title">{item.title}</div>
+					<div class="accordion-header-gradient"></div>
+				</div>
+				<div class="accordion-item-body">
+					<div class="accordion-item-body-content">
+						<p>{item.content.description}</p>
+						<div class="accordion-media">
+							{item.content.media.map((item: string) => {
+								if (item.includes('.mp4')) {
+									return (
+										<div class="accordion-video">
+											<video
+												class="lazyload"
+												data-src={item}
+												loop
+												autoplay
+												muted
+												playsinline
+												controls
+											/>
+										</div>
+									)
+								} else if (item.includes('.jpg') || item.includes('.png') || item.includes('.jpeg')) {
+									return (
+										<div class="accordion-image">
+											<img src={item} alt="" />
+										</div>
+									)
+								} else if (item.split('').length) {
+									return (
+										<div class="accordion-video">
+											<YouTube id={item} js-api />
+										</div>
+									)
+								}
+							})}
+						</div>
+					</div>
+					<div class="accordion-item-arrow">
+						<img
+							src="assets/selected-projects/icon-close.png"
+							alt="close-button"
+						/>
+					</div>
+				</div>
+			</div>
+		))}
+	</div>
+</section>

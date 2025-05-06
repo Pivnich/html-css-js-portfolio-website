@@ -1,0 +1,242 @@
+{
+  "sections": [
+    {
+      "title": "Selected projects",
+      "subtitle": "Browse My",
+      "type": "accordion",
+      "items": [
+        {
+          "title": "LOGO ANIMATION",
+          "logo": "assets/selected-projects/logo-jpool.png",
+          "logo_bg": "assets/selected-projects/ill_arrow.png",
+          "background": "yellow",
+          "content": {
+            "description": "JPOOL is a liquid staking platform, so it made perfect sense to me that the animation should reflect that —smooth, fluid, and seamless. It should feel as liquid as possible, right down to the sound effects.",
+            "media": [
+              "assets/selected-projects/Jpool_logo_outro.mp4",
+              "assets/selected-projects/Jpool_logo_solo_black.mp4"
+            ]
+          }
+        },
+        {
+          "title": "TWIPE DOCUMENTARY",
+          "logo": "assets/selected-projects/logo-code-store.png",
+          "background": "pink",
+          "content": {
+            "description": "This documentary was hands down the toughest but also the most exciting project I’ve worked on. It really pushed me to face my strengths and weaknesses and made me throw in everything I’ve got — motion animation, sound design, color correction, even a back up the points highlighted in the video.",
+            "media": [
+              "pOcwOV_WqTg"
+            ]
+          }
+        },
+        {
+          "title": "SHORT VIDEO PROMO",
+          "logo": "assets/selected-projects/logo-dubidoc.png",
+          "background": "purple",
+          "content": {
+            "description": "This promo reel is a solid showcase of my marketing design skills. If you think the video feels a bit too corporate — I completely agree! That’s exactly what the client wanted. Still, even working with stock footage, I can bring your idea to life. For this project, I even recorded the voiceover myself using my own audio gear. Motion animation, color correction, a carefully chosen dynamic soundtrack to set the pace, logo animation — all of it comes together to sell your product effectively.",
+            "media": [
+              "assets/selected-projects/dudidoc_output.mp4"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "",
+      "subtitle": "",
+      "type": "sliders",
+      "items": [
+        {
+          "type": "image-slider",
+          "title": "3D Works",
+          "subtitle": "",
+          "items": [
+            "./assets/hidden.mp4",
+            "./assets/Dudavac.mp4",
+            "./assets/dispersion.mp4",
+            "./assets/dndrpl.jpg",
+            "./assets/meat star.mp4",
+            "./assets/skeleton.mp4"
+          ]
+        },
+        {
+          "type": "video-slider",
+          "title": "Videos",
+          "subtitle": "",
+          "items": [
+            "ef1I-eLRGsc",
+            "1xlo1I5tF70",
+            "b96Fun1DrAs",
+            "xXokdGdxJC8",
+            "0rMlz2NaHAk"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Recent Projects",
+      "subtitle": "",
+      "type": "projects",
+      "projects": [
+        {
+          "title": "Lynix (Crypto Wallet) App Design",
+          "image_preview": "./assets/lynix.jpg",
+          "image": "./assets/lynix.jpg",
+          "skills": ["Figma", "Adobe Photoshop"],
+          "link": "https://www.behance.net/gallery/201723961/Crypto-Wallet-App-Design-(concept)"
+        },
+        {
+          "title": "TEA Crypto Social Content design",
+          "image_preview": "assets/tea_prev.jpg",
+          "image": "./assets/tea.jpg",
+          "skills": ["Figma", "Adobe Photoshop", "DALL-E 3"]
+        },
+        {
+          "title": "NFT Project Marketing Visuals For Social Media",
+          "image_preview": "./assets/jadeprev.jpg",
+          "image": "./assets/jade.jpg",
+          "skills": ["Figma", "Adobe Photoshop", "Midjourney"]
+        },
+        {
+          "title": "Digital Marketing Agency Instagram Posts",
+          "image_preview": "./assets/bibaprev.jpg",
+          "image": "./assets/biba.jpg",
+          "skills": ["Figma", "Adobe Photoshop"]
+        }
+      ]
+    },
+    {
+      "title": "About Me",
+      "subtitle": "Get To Know More",
+      "type": "about",
+      "about": {
+        "image": "assets/profile-pic.jpg",
+        "experience": ["4+ years: Graphic Design", "2 years: 3D Modeling", "1 year: Video Editing"],
+        "education": ["B.Sc. in Information Technology"],
+        "text": "Hi, my name is Max, I am a digital designer with over 5 years of experience in the field. My work is to transform your ideas into visual designs. My services include Graphic Design, Social Media Content, Video Production/Editing, Brand Identity, Print Designs and more. Check my most recent works below and contact me, if you want to boost your project!"
+      }
+    },
+    {
+      "title": "Skills",
+      "subtitle": "Explore My",
+      "type": "checkmarks-list",
+      "lists": [
+        {
+          "title": "Programs",
+          "skills": [
+            {
+              "title": "Photoshop",
+              "subtitle": ""
+            },
+            {
+              "title": "Illustrator",
+              "subtitle": ""
+            },
+            {
+              "title": "After Effects",
+              "subtitle": ""
+            },
+            {
+              "title": "Media Encoder",
+              "subtitle": ""
+            },
+            {
+              "title": "Microsoft Clipchamp",
+              "subtitle": ""
+            },
+            {
+              "title": "Power Point",
+              "subtitle": ""
+            },
+            {
+              "title": "Blender",
+              "subtitle": "3D Graphics Software"
+            },
+            {
+              "title": "Makehuman",
+              "subtitle": ""
+            },
+            {
+              "title": "Stable Diffusion",
+              "subtitle": "AI Generative Network"
+            },
+            {
+              "title": "Figma",
+              "subtitle": ""
+            }
+          ]
+        },
+        {
+          "title": "Skillset",
+          "skills": [
+            {
+              "title": "Webflow",
+              "subtitle": ""
+            },
+            {
+              "title": "Showreel Making",
+              "subtitle": ""
+            },
+            {
+              "title": "Video Editing",
+              "subtitle": ""
+            },
+            {
+              "title": "3D Modeling and Animation",
+              "subtitle": ""
+            },
+            {
+              "title": "Branding",
+              "subtitle": ""
+            },
+            {
+              "title": "Layout",
+              "subtitle": ""
+            },
+            {
+              "title": "Pixel Art and Animation",
+              "subtitle": ""
+            },
+            {
+              "title": "Art Level Design",
+              "subtitle": ""
+            },
+            {
+              "title": "Typography",
+              "subtitle": ""
+            },
+            {
+              "title": "Datamosh",
+              "subtitle": ""
+            },
+            {
+              "title": "Prompt Engineering",
+              "subtitle": ""
+            },
+            {
+              "title": "AI Artist",
+              "subtitle": ""
+            },
+            {
+              "title": "Printmaking",
+              "subtitle": ""
+            },
+            {
+              "title": "Creative Adviser",
+              "subtitle": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Contact Me",
+      "type": "footer-contacts",
+      "email": "maxvulchyn@protonmail.com",
+      "telegram": "https://t.me/gonzoshrimp",
+      "linkedin": "https://linkedin.com/in/maksymvulchyn",
+      "behance": "https://www.behance.net/maxvulchyn"
+    }
+  ]
+}

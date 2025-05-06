@@ -1,0 +1,134 @@
+---
+import { YouTube } from '@astro-community/astro-embed-youtube';
+const { items } = Astro.props;
+---
+<section class="projects" data-aos="fade-up" data-aos-offset="150">
+	<div id="projects" class="anchor"></div>
+	<div class="slider-block">
+		<p class="section__text__p1">{items[0].subtitle}</p>
+		<h2>{items[0].title}</h2>
+
+		<div class="swiper">
+			<div class="swiper-wrapper">
+				{items[0].items?.map((item: any) => (
+					<div class="swiper-slide">
+						{
+							item.includes('.mp4') ? (
+								<video
+									class="lazyload"
+									data-src={item}
+									loop
+									autoplay
+									muted
+									playsinline
+								/>
+							) : (
+								<img
+									src={item}
+									alt="dndrpl"
+									width="100%"
+									height="100%"
+								/>
+							)
+						}
+					</div>
+				))}
+			</div>
+			<div class="swiper-pagination"></div>
+			<!-- <div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div> -->
+		</div>
+	</div>
+
+	<div class="slider-block" data-aos="fade-up" data-aos-offset="70">
+		<p class="section__text__p1">{items[1].subtitle}</p>
+		<h2>{items[1].title}</h2>
+		<div class="swiper wide">
+			<div class="swiper-wrapper">
+				{items[1].items?.map((item: any) => (
+					<div class="swiper-slide">
+						<YouTube id={item} js-api />
+					</div>
+				))}
+			</div>
+			<div class="swiper-pagination"></div>
+			<!-- <div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div> -->
+		</div>
+	</div>
+	<img
+		src="assets/arrow.png"
+		alt="Arrow icon"
+		class="icon arrow"
+		onclick="location.href='#about'"
+		width="100%"
+		height="100%"
+	/>
+</section>
+
+<script>
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+
+import Swiper from 'swiper'
+import { EffectCoverflow,
+	// Navigation,
+	Pagination
+} from'swiper/modules'
+
+import 'swiper/css'
+// import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import '../../styles/swiper.scss'
+new Swiper('.swiper', {
+	// loop: true,
+	modules: [
+		// Navigation,
+		Pagination,
+		EffectCoverflow
+	],
+	pagination: {
+		el: '.swiper-pagination',
+	},
+	// navigation: {
+	// 	nextEl: '.swiper-button-next',
+	// 	prevEl: '.swiper-button-prev',
+	// },
+	autoplay: {
+		delay: 1000,
+	},
+	slidesPerView: 'auto',
+	// pagination: {
+	// 	el: '.swiper-pagination',
+	// },
+	grabCursor: true,
+	centeredSlides: true,
+	// loop: true,
+	initialSlide: 1,
+	spaceBetween: 0,
+	breakpoints: {
+		768: {
+			spaceBetween: 20,
+		},
+	},
+	effect: 'coverflow',
+	coverflowEffect: {
+		rotate: 0,
+		scale: 0.7,
+		// stretch: 0,
+		// depth: 50,
+		// modifier: 1,
+		// slideShadows: true,
+	},
+	// navigation: {
+	// 	nextEl: '.swiper-button-next',
+	// 	prevEl: '.swiper-button-prev',
+	// },
+	on: {
+		click(e) {
+			// @ts-ignore
+			e.slideTo(this.clickedIndex)
+		},
+	},
+})
+</script>

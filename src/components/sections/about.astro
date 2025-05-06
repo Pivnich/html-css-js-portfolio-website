@@ -1,0 +1,59 @@
+---
+const { title, subtitle, about } = Astro.props;
+---
+<section class="about" data-aos="fade-up" data-aos-offset="150">
+	<div id="about" class="anchor"></div>
+	<p class="section__text__p1">{subtitle}</p>
+	<h2 class="title">{title}</h2>
+	<div class="section-container">
+		<div class="section__pic-container">
+			<img
+				src={about.image}
+				alt="Profile picture"
+				width="100%"
+				height="100%"
+			/>
+		</div>
+		<div class="about-details-container">
+			<div class="about-containers">
+				{about.experience.length && (<div class="details-container">
+					<img
+						src="assets/experience.png"
+						alt="experience icon"
+						class="icon"
+						width="100%"
+						height="100%"
+					/>
+					<h3>Experience</h3>
+					{about.experience.map((item: string) => (
+						<p>{item}</p>
+					))}
+				</div>)}
+				{about.education.length && (<div class="details-container">
+					<img
+						src="assets/education.png"
+						alt="education icon"
+						class="icon"
+						width="100%"
+						height="100%"
+					/>
+					<h3>Education</h3>
+					{about.education.map((item: string) => (
+						<p>{item}</p>
+					))}
+				</div>)}
+			</div>
+			<div class="text-container">
+				<p>{about.text}</p>
+			</div>
+		</div>
+	</div>
+	<img
+		src="assets/arrow.png"
+		alt="Arrow icon"
+		class="icon arrow"
+		onclick="location.href='#experience'"
+		width="100%"
+		height="100%"
+	/>
+</section>

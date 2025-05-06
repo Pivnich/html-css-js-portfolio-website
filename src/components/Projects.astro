@@ -1,0 +1,42 @@
+---
+// import projects from '../data/projects.json'
+// import { YouTube } from '@astro-community/astro-embed-youtube';
+---
+<div class="swiper" data-aos="fade-up">
+  <div class="swiper-wrapper">
+    <!-- {projects.map(project => (
+      <div class="swiper-slide">
+        <div class="slide-content">
+          <h3>{project.title}</h3>
+          {project.image && <img src={project.image} alt={project.title} />}
+          {project.video && <YouTube id={project.video} />}
+        </div>
+      </div>
+    ))} -->
+  </div>
+  <!-- pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+<script>
+import Swiper from 'swiper'
+import { Navigation, Pagination } from 'swiper/modules'
+
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+new Swiper('.swiper', {
+	loop: true,
+	modules: [Navigation, Pagination],
+	pagination: {
+		el: '.swiper-pagination',
+	},
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+	},
+})
+</script>

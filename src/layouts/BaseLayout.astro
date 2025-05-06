@@ -1,0 +1,49 @@
+---
+import '../styles/bundle.scss'
+// import ThemeToggler from '../components/ThemeToggler.astro'
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  <link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <title>Max Vulchyn — Digital Designer</title>
+  <link
+			rel="preload"
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+			as="style"
+			onload="this.onload=null;this.rel='stylesheet'"
+		/>
+		<noscript>
+			<link
+				href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+				rel="stylesheet"
+				type="text/css"
+			/>
+		</noscript>
+		<meta
+			name="description"
+			content="Max Vulchyn — Digital Designer | Graphic Designer, Video Editor, 3d Artist"
+		/>
+</head>
+<body class="dark">
+  <noscript>
+    <style type="text/css">
+        [data-aos] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+    </style>
+    <h2>
+      You don't have javascript enabled.  Good luck with that.
+    </h2>
+  </noscript>
+  
+  <!-- <ThemeToggler /> -->
+  <slot />
+</body>
+</html>
