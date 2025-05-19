@@ -24,13 +24,13 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 					<div class="accordion-item-body-content">
 						<p>{item.content.description}</p>
 						<div class="accordion-media">
-							{item.content.media.map((item: string) => {
-								if (item.includes('.mp4')) {
+							{item.content.media.map((_item: string) => {
+								if (_item.includes('.mp4')) {
 									return (
 										<div class="accordion-video">
 											<video
 												class="lazyload"
-												data-src={item}
+												data-src={_item}
 												loop
 												autoplay
 												muted
@@ -39,16 +39,16 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 											/>
 										</div>
 									)
-								} else if (item.includes('.jpg') || item.includes('.png') || item.includes('.jpeg')) {
+								} else if (_item.includes('.jpg') || _item.includes('.png') || _item.includes('.jpeg')) {
 									return (
 										<div class="accordion-image">
-											<img src={item} alt="" />
+											<img src={_item} alt="" />
 										</div>
 									)
-								} else if (item.split('').length) {
+								} else if (_item.split('').length) {
 									return (
 										<div class="accordion-video">
-											<YouTube id={item} js-api />
+											<YouTube id={_item} js-api posterQuality="high" title={item.title} />
 										</div>
 									)
 								}
