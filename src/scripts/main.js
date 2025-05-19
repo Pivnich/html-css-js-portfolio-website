@@ -4,14 +4,14 @@ import 'aos/dist/aos.css'
 AOS.init()
 
 async function setAllVideosMuted() {
-	const videos = document.getElementsByTagName('video')
+	const activeAccordion = document.querySelector('.accordion-wrapper.active')
+
+	const videos = activeAccordion.getElementsByTagName('video')
 	for (const video of videos) {
 		video.muted = true
 	}
 
-	const accordioniFrames = document
-		.querySelector('.accordion-wrapper')
-		.querySelectorAll('lite-youtube')
+	const accordioniFrames = activeAccordion.querySelectorAll('lite-youtube')
 	for (const iframe of accordioniFrames) {
 		const video = await iframe.getYTPlayer()
 		video.pauseVideo()
@@ -22,10 +22,15 @@ async function setAllVideosMuted() {
 const headers = document.querySelectorAll('.accordion-item-header')
 const arrows = document.querySelectorAll('.accordion-item-arrow')
 
-function closeAccordion(body, item) {
-	body.style.maxHeight = null
-	item.classList.remove('active')
-	setAllVideosMuted()
+async function closeAccordion(body, item) {
+	try {
+		await setAllVideosMuted()
+	} catch (err) {
+		console.log(err)
+	} finally {
+		body.style.maxHeight = null
+		item.classList.remove('active')
+	}
 }
 
 headers.forEach(function (header) {
