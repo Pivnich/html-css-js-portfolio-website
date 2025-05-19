@@ -13,8 +13,11 @@ async function setAllVideosMuted() {
 
 	const accordioniFrames = activeAccordion.querySelectorAll('lite-youtube')
 	for (const iframe of accordioniFrames) {
-		const video = await iframe.getYTPlayer()
-		video.pauseVideo()
+		const isActive = iframe.classList.contains('lyt-activated')
+		if (isActive) {
+			const video = await iframe.getYTPlayer()
+			video.pauseVideo()
+		}
 	}
 }
 
