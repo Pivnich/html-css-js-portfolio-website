@@ -23,6 +23,7 @@ async function setAllVideosMuted() {
 
 // ACCORDION
 const headers = document.querySelectorAll('.accordion-item-header')
+const items = document.querySelectorAll('.accordion-item')
 const arrows = document.querySelectorAll('.accordion-item-arrow')
 
 async function closeAccordion(body, item) {
@@ -36,25 +37,48 @@ async function closeAccordion(body, item) {
 	}
 }
 
-headers.forEach(function (header) {
+headers.forEach(function (header, index) {
 	header.addEventListener('click', function () {
 		const item = this.parentElement
 		const body = item.querySelector('.accordion-item-body')
 
+		// Close if already active
 		if (item.classList.contains('active')) {
 			closeAccordion(body, item)
-		} else {
-			const activeItem = document.querySelector('.accordion-item.active')
-			if (activeItem) {
-				closeAccordion(
-					activeItem.querySelector('.accordion-item-body'),
-					activeItem
-				)
-			}
-
-			item.classList.add('active')
-			body.style.maxHeight = body.scrollHeight + 'px'
+			return
 		}
+
+		// Define paddings and sizes
+		const firstItemTop = items[0].getBoundingClientRect().top + window.scrollY
+		const headerHeight = this.offsetHeight
+
+		// Getting gap
+		const gap =
+			parseFloat(getComputedStyle(item.parentElement).gap || 0) ||
+			parseFloat(getComputedStyle(item).marginBottom) ||
+			0
+
+		// Calculate scroll position
+		const scrollToY = firstItemTop + index * (headerHeight + gap)
+
+		// Scroll to next active accordion
+		window.scrollTo({
+			top: scrollToY,
+			behavior: 'smooth',
+		})
+
+		// Close active if exists
+		const activeItem = document.querySelector('.accordion-item.active')
+		if (activeItem) {
+			closeAccordion(
+				activeItem.querySelector('.accordion-item-body'),
+				activeItem
+			)
+		}
+
+		// Open current
+		item.classList.add('active')
+		body.style.maxHeight = body.scrollHeight + 'px'
 	})
 })
 
