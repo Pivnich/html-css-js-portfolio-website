@@ -4,7 +4,7 @@ import 'aos/dist/aos.css'
 AOS.init()
 
 async function setAllVideosMuted() {
-	const activeAccordion = document.querySelector('.accordion-wrapper.active')
+	const activeAccordion = document.querySelector('.accordion-item.active')
 
 	const videos = activeAccordion.getElementsByTagName('video')
 	for (const video of videos) {
