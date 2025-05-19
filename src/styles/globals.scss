@@ -1037,6 +1037,12 @@ ul.badges {
 		padding-left: 16px;
 		line-height: 32px;
 	}
+	@media screen and (max-width: 640px) {
+		font-size: 18px;
+		text-align: right;
+		padding-left: 8px;
+		line-height: 22px;
+	}
 }
 .accordion-item-title-logo {
 	max-width: 303px;
@@ -1054,6 +1060,9 @@ ul.badges {
 
 	@media screen and (max-width: 840px) {
 		max-width: 150px;
+	}
+	@media screen and (max-width: 640px) {
+		padding: 8px 0;
 	}
 }
 .accordion-item-body {
