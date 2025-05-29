@@ -53,7 +53,7 @@ body {
 	background-color: var(--main-bg-color);
 	color: var(--text-color);
 
-	background-image: url('../assets/main-bg.jpg');
+	background-image: url('../assets/main-bg.webp');
 	background-attachment: fixed;
 	background-position: center center;
 	background-size: cover;
@@ -967,20 +967,20 @@ ul.badges {
 	justify-content: space-between;
 	width: 100%;
 	overflow: hidden;
-	background-size: 435px, cover;
+	background-size: 435px, contain;
 	background-position: left, center;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat, repeat-y;
 
 	transition: border-radius 0.35s ease 0.1s, filter 0.35s ease;
 
 	@media screen and (max-width: 1024px) {
 		padding-left: 24px;
 		height: 90px;
-		background-size: 340px 90px, cover;
+		background-size: 340px 90px, contain;
 	}
 	@media screen and (max-width: 840px) {
 		height: 80px;
-		background-size: 300px 90px, cover;
+		background-size: 300px 90px, contain;
 	}
 }
 .accordion-header-gradient {

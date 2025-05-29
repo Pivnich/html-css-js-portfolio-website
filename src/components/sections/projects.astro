@@ -47,7 +47,7 @@ const { items } = Astro.props;
 			<div class="swiper-wrapper">
 				{items[1].items?.map((item: any) => (
 					<div class="swiper-slide">
-						<YouTube id={item} js-api posterQuality="low" />
+						<YouTube id={item} js-api posterQuality="default" />
 					</div>
 				))}
 			</div>
