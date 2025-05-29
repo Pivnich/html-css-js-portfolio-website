@@ -997,20 +997,32 @@ ul.badges {
 
 	transition: opacity 0.35s ease;
 }
-.accordion-item.active {
-	.accordion-header-gradient {
-		opacity: 1;
+.accordion-item {
+	.accordion-media {
+		video {
+			display: none;
+		}
 	}
-	.accordion-item-header {
-		border-bottom-left-radius: 0;
-		border-bottom-right-radius: 0;
+	&.active {
+		.accordion-media {
+			video {
+				display: block;
+			}
+		}
+		.accordion-header-gradient {
+			opacity: 1;
+		}
+		.accordion-item-header {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
 
-		transition: filter 0.35s ease;
-	}
-	.accordion-item-body {
-		// transition-delay: 0.25s;
-		transition-delay: unset;
-		transition: max-height 2s ease-out;
+			transition: filter 0.35s ease;
+		}
+		.accordion-item-body {
+			// transition-delay: 0.25s;
+			transition-delay: unset;
+			transition: max-height 2s ease-out;
+		}
 	}
 }
 
