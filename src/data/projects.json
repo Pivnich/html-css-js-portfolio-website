@@ -81,26 +81,26 @@
       "projects": [
         {
           "title": "Lynix (Crypto Wallet) App Design",
-          "image_preview": "./assets/lynix.jpg",
+          "image_preview": "./assets/lynix_prev.webp",
           "image": "./assets/lynix.jpg",
           "skills": ["Figma", "Adobe Photoshop"],
           "link": "https://www.behance.net/gallery/201723961/Crypto-Wallet-App-Design-(concept)"
         },
         {
           "title": "TEA Crypto Social Content design",
-          "image_preview": "assets/tea_prev.jpg",
+          "image_preview": "assets/tea_prev.webp",
           "image": "./assets/tea.jpg",
           "skills": ["Figma", "Adobe Photoshop", "DALL-E 3"]
         },
         {
           "title": "NFT Project Marketing Visuals For Social Media",
-          "image_preview": "./assets/jadeprev.jpg",
+          "image_preview": "./assets/jadeprev.webp",
           "image": "./assets/jade.jpg",
           "skills": ["Figma", "Adobe Photoshop", "Midjourney"]
         },
         {
           "title": "Digital Marketing Agency Instagram Posts",
-          "image_preview": "./assets/bibaprev.jpg",
+          "image_preview": "./assets/bibaprev.webp",
           "image": "./assets/biba.jpg",
           "skills": ["Figma", "Adobe Photoshop"]
         }
