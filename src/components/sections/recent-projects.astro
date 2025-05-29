@@ -16,7 +16,7 @@ const { title, subtitle, items } = Astro.props;
 						<img data-src={project.image} class="lazyload" />
 						<a class="open-original" href={project.image} target="_blank">
 							Open original
-							<img src="./assets/external-link.png" class="icon" />
+							<img src="./assets/external-link.png" class="icon" alt="external link" />
 						</a>
 					</div>
 				</div>
@@ -30,7 +30,7 @@ const { title, subtitle, items } = Astro.props;
 						target="_blank"
 					>
 						{project.title}
-						<img src="./assets/external-link.png" class="icon" />
+						<img src="./assets/external-link.png" class="icon" alt="External link" />
 					</a>) : (
 						<h3 class="card-link">{project.title}</h3>
 					)}
