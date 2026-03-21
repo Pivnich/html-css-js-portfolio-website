@@ -3,40 +3,70 @@ import 'aos/dist/aos.css'
 
 AOS.init()
 
-async function setAllVideosMuted() {
-	const activeAccordion = document.querySelector('.accordion-item.active')
+// Cache elements for performance
+const headers = document.querySelectorAll('.accordion-item-header')
+const items = document.querySelectorAll('.accordion-item')
+const arrows = document.querySelectorAll('.accordion-item-arrow')
+const backToTopBtn = document.getElementById('backToTop')
+const modalTriggers = document.querySelectorAll('.modal-trigger')
+const modalBackdrop = document.querySelector('.backdrop')
 
+// Function to pause videos (non-blocking, without await)
+function pauseVideosInAccordion(activeAccordion) {
+	if (!activeAccordion) return
+
+	// Regular videos
 	const videos = activeAccordion.getElementsByTagName('video')
 	for (const video of videos) {
 		video.muted = true
+		video.pause()
 	}
 
+	// YouTube videos (asynchronous, but don't wait)
 	const accordioniFrames = activeAccordion.querySelectorAll('lite-youtube')
 	for (const iframe of accordioniFrames) {
 		const isActive = iframe.classList.contains('lyt-activated')
 		if (isActive) {
-			const video = await iframe.getYTPlayer()
-			video.pauseVideo()
+			// Don't wait, just try to pause
+			iframe
+				.getYTPlayer()
+				.then((video) => video.pauseVideo())
+				.catch(() => {})
 		}
 	}
 }
 
-// ACCORDION
-const headers = document.querySelectorAll('.accordion-item-header')
-const items = document.querySelectorAll('.accordion-item')
-const arrows = document.querySelectorAll('.accordion-item-arrow')
-
-async function closeAccordion(body, item) {
-	try {
-		await setAllVideosMuted()
-	} catch (err) {
-		console.log(err)
-	} finally {
-		body.style.maxHeight = null
-		item.classList.remove('active')
-	}
+// Closing accordion
+function closeAccordion(body, item) {
+	pauseVideosInAccordion(item)
+	body.style.maxHeight = null
+	item.classList.remove('active')
 }
 
+// Opening accordion
+function openAccordion(item, body, index) {
+	// Scroll to active accordion (optimized for performance)
+	const firstItemTop = items[0].getBoundingClientRect().top + window.scrollY
+	const headerHeight = headers[index].offsetHeight
+	const gap = parseFloat(getComputedStyle(item.parentElement).gap || 0) || 0
+	let scrollToY = firstItemTop + index * (headerHeight + gap)
+
+	// Add offset for hamburger-nav on mobile (if it's fixed)
+	const hamburgerNav = document.getElementById('hamburger-nav')
+	if (hamburgerNav && window.innerWidth <= 768) {
+		scrollToY -= hamburgerNav.offsetHeight
+	}
+
+	// Use requestAnimationFrame for smooth scroll without blocking
+	requestAnimationFrame(() => {
+		window.scrollTo({ top: scrollToY, behavior: 'smooth' })
+	})
+
+	item.classList.add('active')
+	body.style.maxHeight = body.scrollHeight + 'px'
+}
+
+// Header click handler
 headers.forEach(function (header, index) {
 	header.addEventListener('click', function () {
 		const item = this.parentElement
@@ -48,40 +78,19 @@ headers.forEach(function (header, index) {
 			return
 		}
 
-		// Define paddings and sizes
-		const firstItemTop = items[0].getBoundingClientRect().top + window.scrollY
-		const headerHeight = this.offsetHeight
-
-		// Getting gap
-		const gap =
-			parseFloat(getComputedStyle(item.parentElement).gap || 0) ||
-			parseFloat(getComputedStyle(item).marginBottom) ||
-			0
-
-		// Calculate scroll position
-		const scrollToY = firstItemTop + index * (headerHeight + gap)
-
-		// Scroll to next active accordion
-		window.scrollTo({
-			top: scrollToY,
-			behavior: 'smooth',
-		})
-
-		// Close active if exists
 		const activeItem = document.querySelector('.accordion-item.active')
 		if (activeItem) {
 			closeAccordion(
 				activeItem.querySelector('.accordion-item-body'),
-				activeItem
+				activeItem,
 			)
 		}
 
-		// Open current
-		item.classList.add('active')
-		body.style.maxHeight = body.scrollHeight + 'px'
+		openAccordion(item, body, index)
 	})
 })
 
+// Arrow handler
 arrows.forEach(function (arrow) {
 	arrow.addEventListener('click', function (e) {
 		e.stopPropagation()
@@ -90,61 +99,53 @@ arrows.forEach(function (arrow) {
 		const body = item.querySelector('.accordion-item-body')
 		const header = item.querySelector('.accordion-item-header')
 
-		header.scrollIntoView({
-			behavior: 'smooth',
-			block: 'start',
-		})
+		// Smooth scroll to header
+		header.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
-		setTimeout(function () {
-			closeAccordion(body, item)
-		}, 10)
+		// Close after scroll
+		setTimeout(() => closeAccordion(body, item), 300) // Increased timeout for smoothness
 	})
 })
 
-// BACK TO TOP
-const backToTopBtn = document.getElementById('backToTop')
+// BACK TO TOP with throttle
+let scrollTimeout
+window.addEventListener('scroll', function () {
+	clearTimeout(scrollTimeout)
+	scrollTimeout = setTimeout(() => {
+		const { innerHeight } = window
+		const scrollTop =
+			document.body.scrollTop || document.documentElement.scrollTop
+		if (scrollTop > innerHeight / 2) {
+			backToTopBtn.classList.add('show')
+		} else {
+			backToTopBtn.classList.remove('show')
+		}
+	}, 100) // Throttle at 100ms
+})
 
-window.onscroll = function () {
-	scrollFunction()
-}
-
-function scrollFunction() {
-	const { innerHeight } = window
-	if (
-		document.body.scrollTop > innerHeight / 2 ||
-		document.documentElement.scrollTop > innerHeight / 2
-	) {
-		backToTopBtn.classList.add('show')
-	} else {
-		backToTopBtn.classList.remove('show')
-	}
-}
-
-document.getElementById('backToTop').addEventListener('click', () => {
-	// document.body.scrollTop = 0; // For Safari
-	// document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+backToTopBtn.addEventListener('click', () => {
 	window.scrollTo({ top: 0, behavior: 'smooth' })
 })
 
 // MODAL
-// To open modal - element with class name "modal-trigger" and onclick="openModal(event)"
-// and sibling element with class name "modal-inject" with needed modal content
+function toggleModal() {
+	const modal = document.querySelector('.modal')
+	if (modal) modal.classList.toggle('active')
+}
 
-const modalTriggers = document.querySelectorAll('.modal-trigger')
-const modalBackdrop = document.querySelector('.backdrop')
+function setModalContent(content) {
+	const modalBody = document.querySelector('.modal-body')
+	if (modalBody) modalBody.innerHTML = content
+}
 
 modalBackdrop.addEventListener('click', toggleModal)
 
 modalTriggers?.forEach(function (modalTrigger) {
 	modalTrigger.addEventListener('click', function (e) {
-		console.log(e)
-		const modalInjectContainer = e.target?.nextSibling.nextSibling
-		console.log(modalInjectContainer)
-		const isContent = modalInjectContainer.classList?.contains('modal-inject')
-		if (!isContent) return
+		const modalInjectContainer = e.target?.nextSibling?.nextSibling
+		if (!modalInjectContainer?.classList?.contains('modal-inject')) return
 
 		const modalContent = modalInjectContainer.innerHTML
-
 		setModalContent(modalContent)
 		toggleModal()
 	})
@@ -160,15 +161,6 @@ modalTriggers?.forEach(function (modalTrigger) {
 // 	setModalContent(modalContent)
 // 	toggleModal()
 // }
-function setModalContent(content) {
-	const modal = document.getElementById('modal')
-	console.log(modal)
-	modal.getElementsByClassName('modal-content')[0].innerHTML = content
-}
-function toggleModal() {
-	const modal = document.getElementById('modal')
-	modal?.classList.toggle('open')
-}
 
 // MENU
 const togglers = document.querySelectorAll('[data-toggle-menu]')
