@@ -1,7 +1,8 @@
 ---
+import FramerSection from '../FramerSection.tsx'
 const { title, subtitle, items } = Astro.props;
 ---
-<section class="projects_2" data-aos="fade-up" data-aos-offset="150">
+<FramerSection client:load className="projects_2">
 	<div id="projects_2" class="anchor"></div>
 	<p class="section__text__p1">{subtitle}</p>
 	<h2>{title}</h2>
@@ -46,4 +47,4 @@ const { title, subtitle, items } = Astro.props;
 		width="100%"
 		height="100%"
 	/>
-</section>
+</FramerSection>

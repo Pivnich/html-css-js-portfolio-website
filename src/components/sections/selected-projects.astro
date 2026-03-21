@@ -1,9 +1,10 @@
 ---
+import FramerSection from '../FramerSection.tsx'
 const { title, subtitle, items } = Astro.props;
 import { YouTube } from '@astro-community/astro-embed-youtube';
 ---
 
-<section class="selected-projects" data-aos="fade-up" data-aos-offset="150">
+<FramerSection client:load className="selected-projects">
 	<div id="selected-projects" class="anchor"></div>
 	<p class="section__text__p1">{subtitle}</p>
 	<h2>{title}</h2>
@@ -65,4 +66,4 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 			</div>
 		))}
 	</div>
-</section>
+</FramerSection>

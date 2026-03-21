@@ -1,8 +1,10 @@
 ---
+import FramerSection from '../FramerSection.tsx'
+import FramerInView from '../FramerInView.tsx'
 import { YouTube } from '@astro-community/astro-embed-youtube';
 const { items } = Astro.props;
 ---
-<section class="projects" data-aos="fade-up" data-aos-offset="150">
+<FramerSection client:load className="projects">
 	<div id="projects" class="anchor"></div>
 	<div class="slider-block">
 		<p class="section__text__p1">{items[0].subtitle}</p>
@@ -40,7 +42,7 @@ const { items } = Astro.props;
 		</div>
 	</div>
 
-	<div class="slider-block" data-aos="fade-up" data-aos-offset="70">
+	<FramerInView client:load className="slider-block">
 		<p class="section__text__p1">{items[1].subtitle}</p>
 		<h2>{items[1].title}</h2>
 		<div class="swiper wide">
@@ -55,7 +57,7 @@ const { items } = Astro.props;
 			<!-- <div class="swiper-button-prev"></div>
 			<div class="swiper-button-next"></div> -->
 		</div>
-	</div>
+	</FramerInView>
 	<img
 		src="assets/arrow.png"
 		alt="Arrow icon"
@@ -64,7 +66,7 @@ const { items } = Astro.props;
 		width="100%"
 		height="100%"
 	/>
-</section>
+</FramerSection>
 
 <script>
 import 'lazysizes';

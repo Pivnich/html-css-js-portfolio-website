@@ -1,7 +1,8 @@
 ---
+import FramerSection from '../FramerSection.tsx'
 const { title, email, telegram, linkedin, behance } = Astro.props;
 ---
-<section class="contact" data-aos="fade-up" data-aos-offset="150">
+<FramerSection client:load className="contact">
 	<div id="contact" class="anchor"></div>
 
 	<div class="container">
@@ -55,4 +56,4 @@ const { title, email, telegram, linkedin, behance } = Astro.props;
 			</a>
 		</div>
 	</div>
-</section>
+</FramerSection>

@@ -1,8 +1,9 @@
 ---
+import FramerInView from './FramerInView.tsx'
 // import projects from '../data/projects.json'
 // import { YouTube } from '@astro-community/astro-embed-youtube';
 ---
-<div class="swiper" data-aos="fade-up">
+<FramerInView client:load className="swiper">
   <div class="swiper-wrapper">
     <!-- {projects.map(project => (
       <div class="swiper-slide">
@@ -19,7 +20,7 @@
   <!-- navigation buttons -->
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
-</div>
+</FramerInView>
 
 <script>
 import Swiper from 'swiper'
