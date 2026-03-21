@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "type-check": "astro check",
     "astro": "astro"
   },
   "dependencies": {
@@ -16,6 +17,9 @@
     "swiper": "^12.1.2"
   },
   "devDependencies": {
-    "sass": "^1.98.0"
+    "@astrojs/check": "^0.9.8",
+    "@types/aos": "^3.0.7",
+    "sass": "^1.98.0",
+    "typescript": "^5.9.3"
   }
 }
