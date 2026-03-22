@@ -38,7 +38,7 @@ All JavaScript functionality is organized in the `src/scripts/` directory:
 
 ### Script modules (in `src/scripts/modules/`)
 
-- **`accordion.ts`** 
+- **`accordion.ts`**
   - Accordion item expand/collapse logic
   - Smooth scrolling with hamburger menu offset
   - Video pause functionality
@@ -105,11 +105,11 @@ npm run preview    # Preview production build locally
 
 ## Key improvements over monolithic approach
 
-| Aspect | Before | After |
-|--------|--------|-------|
-| **File size** | 1160 lines (SCSS) | ~80-150 lines each |
-| **Code location** | Single large file | Organized modules |
-| **Changes impact** | Entire file in editor | Specific module |
-| **Dependency tracking** | Implicit | Explicit imports |
-| **Type safety** | No (JS) | Full (TS modules) |
-| **Maintainability** | Complex | Simple |
+| Aspect                  | Before                | After              |
+| ----------------------- | --------------------- | ------------------ |
+| **File size**           | 1160 lines (SCSS)     | ~80-150 lines each |
+| **Code location**       | Single large file     | Organized modules  |
+| **Changes impact**      | Entire file in editor | Specific module    |
+| **Dependency tracking** | Implicit              | Explicit imports   |
+| **Type safety**         | No (JS)               | Full (TS modules)  |
+| **Maintainability**     | Complex               | Simple             |

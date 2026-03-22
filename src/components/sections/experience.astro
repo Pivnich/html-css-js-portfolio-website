@@ -3,36 +3,39 @@ import FramerSection from '../FramerSection.tsx'
 import OptimizedImage from '../OptimizedImage.astro'
 import checkmarkIcon from '../../assets/checkmark.png'
 import arrowIcon from '../../assets/arrow.png'
-const { title, subtitle, lists } = Astro.props;
+const { title, subtitle, lists } = Astro.props
 ---
+
 <FramerSection client:load className="experience">
 	<div id="experience" class="anchor"></div>
 	<p class="section__text__p1">{subtitle}</p>
 	<h2 class="title">{title}</h2>
 	<div class="experience-details-container">
 		<div class="about-containers">
-			{lists.map((list: any) => (
-				<div class="details-container">
-					<h2>{list.title}</h2>
-					<ul class="article-container">
-						{list.skills.map((skill: {title: string; subtitle: string}) => (
-							<li>
-								<OptimizedImage
-									src={checkmarkIcon}
-									alt="Experience icon"
-									class="icon"
-									width={24}
-									height={24}
-								/>
-								<div>
-									<h3>{skill.title}</h3>
-									{skill.subtitle && <p>{skill.subtitle}</p>}
-								</div>
-							</li>
-						))}
-					</ul>
-				</div>
-			))}
+			{
+				lists.map((list: any) => (
+					<div class="details-container">
+						<h2>{list.title}</h2>
+						<ul class="article-container">
+							{list.skills.map((skill: { title: string; subtitle: string }) => (
+								<li>
+									<OptimizedImage
+										src={checkmarkIcon}
+										alt="Experience icon"
+										class="icon"
+										width={24}
+										height={24}
+									/>
+									<div>
+										<h3>{skill.title}</h3>
+										{skill.subtitle && <p>{skill.subtitle}</p>}
+									</div>
+								</li>
+							))}
+						</ul>
+					</div>
+				))
+			}
 		</div>
 	</div>
 	<OptimizedImage

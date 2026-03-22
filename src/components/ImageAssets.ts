@@ -2,13 +2,10 @@
 import type { ImageMetadata } from 'astro'
 
 // Auto-import all images from assets directory
-const imageModules = import.meta.glob(
-	'../assets/**/*.{jpg,jpeg,png,webp,gif,svg}',
-	{
-		eager: true,
-		import: 'default',
-	},
-)
+const imageModules = import.meta.glob('../assets/**/*.{jpg,jpeg,png,webp,gif,svg}', {
+	eager: true,
+	import: 'default',
+})
 
 // Create mapping from file paths to imported images
 const imageAssets: Record<string, any> = {}

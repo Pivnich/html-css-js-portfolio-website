@@ -2,8 +2,8 @@
 import FramerSection from '../FramerSection.tsx'
 import OptimizedImage from '../OptimizedImage.astro'
 import closeIcon from '../../assets/selected-projects/icon-close.png'
-const { title, subtitle, items } = Astro.props;
-import { YouTube } from '@astro-community/astro-embed-youtube';
+const { title, subtitle, items } = Astro.props
+import { YouTube } from '@astro-community/astro-embed-youtube'
 ---
 
 <FramerSection client:load className="selected-projects">
@@ -11,63 +11,64 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 	<p class="section__text__p1">{subtitle}</p>
 	<h2>{title}</h2>
 	<div class="accordion-wrapper">
-		{items?.map((item: any) => (
-			<div class="accordion-item">
-				<div
-					class="accordion-item-header"
-					style={`background-image: url('${item.logo_bg || ''}'), url('assets/selected-projects/case-bg-${item.background}.webp')`}
-				>
-					<div class="accordion-item-title-logo">
-						<OptimizedImage src={item.logo} alt="logo" loading="lazy" decoding="async" />
+		{
+			items?.map((item: any) => (
+				<div class="accordion-item">
+					<div
+						class="accordion-item-header"
+						style={`background-image: url('${item.logo_bg || ''}'), url('assets/selected-projects/case-bg-${item.background}.webp')`}
+					>
+						<div class="accordion-item-title-logo">
+							<OptimizedImage src={item.logo} alt="logo" loading="lazy" decoding="async" />
+						</div>
+						<div class="accordion-item-title">{item.title}</div>
+						<div class="accordion-header-gradient" />
 					</div>
-					<div class="accordion-item-title">{item.title}</div>
-					<div class="accordion-header-gradient"></div>
-				</div>
-				<div class="accordion-item-body">
-					<div class="accordion-item-body-content">
-						<p>{item.content.description}</p>
-						<div class="accordion-media">
-							{item.content.media.map((_item: string) => {
-								if (_item.includes('.mp4')) {
-									return (
-										<div class="accordion-video">
-											<video
-												class="lazyload"
-												data-src={_item}
-												loop
-												autoplay
-												muted
-												playsinline
-												controls
-										/>
-										</div>
-									)
-								} else if (_item.includes('.jpg') || _item.includes('.png') || _item.includes('.jpeg')) {
-									return (
-										<div class="accordion-image">
-											<OptimizedImage src={_item} alt="media" loading="lazy" decoding="async" />
-										</div>
-									)
-								} else if (_item.split('').length) {
-									return (
-										<div class="accordion-video">
-											<YouTube id={_item} js-api posterQuality="high" title={item.title} />
-										</div>
-									)
-								}
-							})}
+					<div class="accordion-item-body">
+						<div class="accordion-item-body-content">
+							<p>{item.content.description}</p>
+							<div class="accordion-media">
+								{item.content.media.map((_item: string) => {
+									if (_item.includes('.mp4')) {
+										return (
+											<div class="accordion-video">
+												<video
+													class="lazyload"
+													data-src={_item}
+													loop
+													autoplay
+													muted
+													playsinline
+													controls
+												/>
+											</div>
+										)
+									} else if (
+										_item.includes('.jpg') ||
+										_item.includes('.png') ||
+										_item.includes('.jpeg')
+									) {
+										return (
+											<div class="accordion-image">
+												<OptimizedImage src={_item} alt="media" loading="lazy" decoding="async" />
+											</div>
+										)
+									} else if (_item.split('').length) {
+										return (
+											<div class="accordion-video">
+												<YouTube id={_item} js-api posterQuality="high" title={item.title} />
+											</div>
+										)
+									}
+								})}
+							</div>
+						</div>
+						<div class="accordion-item-arrow">
+							<OptimizedImage src={closeIcon} alt="close-button" width={24} height={24} />
 						</div>
 					</div>
-					<div class="accordion-item-arrow">
-						<OptimizedImage
-							src={closeIcon}
-							alt="close-button"
-							width={24}
-							height={24}
-						/>
-					</div>
 				</div>
-			</div>
-		))}
+			))
+		}
 	</div>
 </FramerSection>

@@ -5,8 +5,9 @@ import experienceIcon from '../../assets/experience.png'
 import educationIcon from '../../assets/education.png'
 import arrowIcon from '../../assets/arrow.png'
 import { getOptimizedImage } from '../ImageAssets'
-const { title, subtitle, about } = Astro.props;
+const { title, subtitle, about } = Astro.props
 ---
+
 <FramerSection client:load className="about">
 	<div id="about" class="anchor"></div>
 	<p class="section__text__p1">{subtitle}</p>
@@ -16,36 +17,46 @@ const { title, subtitle, about } = Astro.props;
 			<OptimizedImage
 				src={getOptimizedImage(about.image)}
 				alt="Profile picture"
-			loading="lazy" decoding="async" />
+				loading="lazy"
+				decoding="async"
+			/>
 		</div>
 		<div class="about-details-container">
 			<div class="about-containers">
-				{about.experience.length && (<div class="details-container">
-					<OptimizedImage
-						src={experienceIcon}
-						alt="experience icon"
-						class="icon"
-						width={32}
-						height={32}
-					/>
-					<h3>Experience</h3>
-					{about.experience.map((item: string) => (
-						<p>{item}</p>
-					))}
-				</div>)}
-				{about.education.length && (<div class="details-container">
-					<OptimizedImage
-						src={educationIcon}
-						alt="education icon"
-						class="icon"
-						width={32}
-						height={32}
-					/>
-					<h3>Education</h3>
-					{about.education.map((item: string) => (
-						<p>{item}</p>
-					))}
-				</div>)}
+				{
+					about.experience.length && (
+						<div class="details-container">
+							<OptimizedImage
+								src={experienceIcon}
+								alt="experience icon"
+								class="icon"
+								width={32}
+								height={32}
+							/>
+							<h3>Experience</h3>
+							{about.experience.map((item: string) => (
+								<p>{item}</p>
+							))}
+						</div>
+					)
+				}
+				{
+					about.education.length && (
+						<div class="details-container">
+							<OptimizedImage
+								src={educationIcon}
+								alt="education icon"
+								class="icon"
+								width={32}
+								height={32}
+							/>
+							<h3>Education</h3>
+							{about.education.map((item: string) => (
+								<p>{item}</p>
+							))}
+						</div>
+					)
+				}
 			</div>
 			<div class="text-container">
 				<p>{about.text}</p>

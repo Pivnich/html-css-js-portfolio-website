@@ -2,11 +2,12 @@
 import FramerSection from '../FramerSection.tsx'
 import FramerInView from '../FramerInView.tsx'
 import OptimizedImage from '../OptimizedImage.astro'
-import { YouTube } from '@astro-community/astro-embed-youtube';
+import { YouTube } from '@astro-community/astro-embed-youtube'
 import arrowIcon from '../../assets/arrow.png'
-import { getOptimizedImage } from '../ImageAssets';
-const { items } = Astro.props;
+import { getOptimizedImage } from '../ImageAssets'
+const { items } = Astro.props
 ---
+
 <FramerSection client:load className="projects">
 	<div id="projects" class="anchor"></div>
 	<div class="slider-block">
@@ -15,27 +16,22 @@ const { items } = Astro.props;
 
 		<div class="swiper">
 			<div class="swiper-wrapper">
-				{items[0].items?.map((item: any) => (
-					<div class="swiper-slide">
-						{
-							item.includes('.mp4') ? (
-								<video
-									class="lazyload"
-									data-src={item}
-									loop
-									autoplay
-									muted
-									playsinline
-								/>
+				{
+					items[0].items?.map((item: any) => (
+						<div class="swiper-slide">
+							{item.includes('.mp4') ? (
+								<video class="lazyload" data-src={item} loop autoplay muted playsinline />
 							) : (
 								<OptimizedImage
 									src={getOptimizedImage(item)}
 									alt="dndrpl"
-								loading="lazy" decoding="async" />
-							)
-						}
-					</div>
-				))}
+									loading="lazy"
+									decoding="async"
+								/>
+							)}
+						</div>
+					))
+				}
 			</div>
 			<div class="swiper-pagination"></div>
 			<!-- <div class="swiper-button-prev"></div>
@@ -48,11 +44,13 @@ const { items } = Astro.props;
 		<h2>{items[1].title}</h2>
 		<div class="swiper wide">
 			<div class="swiper-wrapper">
-				{items[1].items?.map((item: any) => (
-					<div class="swiper-slide">
-								<YouTube id={item} js-api posterQuality="default" />
-					</div>
-				))}
+				{
+					items[1].items?.map((item: any) => (
+						<div class="swiper-slide">
+							<YouTube id={item} js-api posterQuality="default" />
+						</div>
+					))
+				}
 			</div>
 			<div class="swiper-pagination"></div>
 			<!-- <div class="swiper-button-prev"></div>
@@ -70,68 +68,69 @@ const { items } = Astro.props;
 </FramerSection>
 
 <script>
-import 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+	import 'lazysizes'
+	import 'lazysizes/plugins/parent-fit/ls.parent-fit'
 
-import Swiper from 'swiper'
-import { EffectCoverflow,
-	// Navigation,
-	Pagination
-} from'swiper/modules'
-
-import 'swiper/css'
-// import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import '../../styles/swiper.scss'
-new Swiper('.swiper', {
-	// loop: true,
-	modules: [
+	import Swiper from 'swiper'
+	import {
+		EffectCoverflow,
 		// Navigation,
 		Pagination,
-		EffectCoverflow
-	],
-	pagination: {
-		el: '.swiper-pagination',
-	},
-	// navigation: {
-	// 	nextEl: '.swiper-button-next',
-	// 	prevEl: '.swiper-button-prev',
-	// },
-	autoplay: {
-		delay: 1000,
-	},
-	slidesPerView: 'auto',
-	// pagination: {
-	// 	el: '.swiper-pagination',
-	// },
-	grabCursor: true,
-	centeredSlides: true,
-	// loop: true,
-	initialSlide: 1,
-	spaceBetween: 0,
-	breakpoints: {
-		768: {
-			spaceBetween: 20,
+	} from 'swiper/modules'
+
+	import 'swiper/css'
+	// import 'swiper/css/navigation'
+	import 'swiper/css/pagination'
+	import '../../styles/swiper.scss'
+	new Swiper('.swiper', {
+		// loop: true,
+		modules: [
+			// Navigation,
+			Pagination,
+			EffectCoverflow,
+		],
+		pagination: {
+			el: '.swiper-pagination',
 		},
-	},
-	effect: 'coverflow',
-	coverflowEffect: {
-		rotate: 0,
-		scale: 0.7,
-		// stretch: 0,
-		// depth: 50,
-		// modifier: 1,
-		// slideShadows: true,
-	},
-	// navigation: {
-	// 	nextEl: '.swiper-button-next',
-	// 	prevEl: '.swiper-button-prev',
-	// },
-	on: {
-		click(e) {
-			// @ts-ignore
-			e.slideTo(this.clickedIndex)
+		// navigation: {
+		// 	nextEl: '.swiper-button-next',
+		// 	prevEl: '.swiper-button-prev',
+		// },
+		autoplay: {
+			delay: 1000,
 		},
-	},
-})
+		slidesPerView: 'auto',
+		// pagination: {
+		// 	el: '.swiper-pagination',
+		// },
+		grabCursor: true,
+		centeredSlides: true,
+		// loop: true,
+		initialSlide: 1,
+		spaceBetween: 0,
+		breakpoints: {
+			768: {
+				spaceBetween: 20,
+			},
+		},
+		effect: 'coverflow',
+		coverflowEffect: {
+			rotate: 0,
+			scale: 0.7,
+			// stretch: 0,
+			// depth: 50,
+			// modifier: 1,
+			// slideShadows: true,
+		},
+		// navigation: {
+		// 	nextEl: '.swiper-button-next',
+		// 	prevEl: '.swiper-button-prev',
+		// },
+		on: {
+			click(e) {
+				// @ts-expect-error - Swiper event type issue
+				e.slideTo(this.clickedIndex)
+			},
+		},
+	})
 </script>

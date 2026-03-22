@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+*.min.js
+*.min.css
+public/
+coverage/
+*.config.js
+*.config.ts
+package-lock.json

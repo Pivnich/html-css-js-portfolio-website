@@ -1,30 +1,23 @@
 // Accordion functionality
 
 // Cache accordion elements
-const headers: NodeListOf<HTMLElement> = document.querySelectorAll(
-	'.accordion-item-header',
-)
-const items: NodeListOf<HTMLElement> =
-	document.querySelectorAll('.accordion-item')
-const arrows: NodeListOf<HTMLElement> = document.querySelectorAll(
-	'.accordion-item-arrow',
-)
+const headers: NodeListOf<HTMLElement> = document.querySelectorAll('.accordion-item-header')
+const items: NodeListOf<HTMLElement> = document.querySelectorAll('.accordion-item')
+const arrows: NodeListOf<HTMLElement> = document.querySelectorAll('.accordion-item-arrow')
 
 // Pause videos (non-blocking, without await)
 function pauseVideosInAccordion(activeAccordion: HTMLElement | null): void {
 	if (!activeAccordion) return
 
 	// Regular videos
-	const videos: HTMLCollectionOf<HTMLVideoElement> =
-		activeAccordion.getElementsByTagName('video')
+	const videos: HTMLCollectionOf<HTMLVideoElement> = activeAccordion.getElementsByTagName('video')
 	for (const video of videos) {
 		video.muted = true
 		video.pause()
 	}
 
 	// YouTube videos (asynchronous, but don't wait)
-	const accordioniFrames: NodeListOf<HTMLElement> =
-		activeAccordion.querySelectorAll('lite-youtube')
+	const accordioniFrames: NodeListOf<HTMLElement> = activeAccordion.querySelectorAll('lite-youtube')
 	for (const iframe of accordioniFrames) {
 		const isActive: boolean = iframe.classList.contains('lyt-activated')
 		if (isActive) {
@@ -44,24 +37,16 @@ function closeAccordion(body: HTMLElement, item: HTMLElement): void {
 }
 
 // Open accordion
-function openAccordion(
-	item: HTMLElement,
-	body: HTMLElement,
-	index: number,
-): void {
+function openAccordion(item: HTMLElement, body: HTMLElement, index: number): void {
 	// Scroll to active accordion (optimized for performance)
-	const firstItemTop: number =
-		items[0].getBoundingClientRect().top + window.scrollY
+	const firstItemTop: number = items[0].getBoundingClientRect().top + window.scrollY
 	const headerHeight: number = headers[index].offsetHeight
 	const gap: number =
-		parseFloat(
-			getComputedStyle(item.parentElement as HTMLElement).gap || '0',
-		) || 0
+		parseFloat(getComputedStyle(item.parentElement as HTMLElement).gap || '0') || 0
 	let scrollToY: number = firstItemTop + index * (headerHeight + gap)
 
 	// Add offset for hamburger-nav on mobile (if it's fixed)
-	const hamburgerNav: HTMLElement | null =
-		document.getElementById('hamburger-nav')
+	const hamburgerNav: HTMLElement | null = document.getElementById('hamburger-nav')
 	if (hamburgerNav && window.innerWidth <= 768) {
 		scrollToY -= hamburgerNav.offsetHeight
 	}
@@ -87,14 +72,9 @@ headers.forEach(function (header: HTMLElement, index: number): void {
 			return
 		}
 
-		const activeItem: HTMLElement | null = document.querySelector(
-			'.accordion-item.active',
-		)
+		const activeItem: HTMLElement | null = document.querySelector('.accordion-item.active')
 		if (activeItem) {
-			closeAccordion(
-				activeItem.querySelector('.accordion-item-body')!,
-				activeItem,
-			)
+			closeAccordion(activeItem.querySelector('.accordion-item-body')!, activeItem)
 		}
 
 		openAccordion(item, body!, index)
@@ -108,9 +88,7 @@ arrows.forEach(function (arrow: HTMLElement): void {
 
 		const item: HTMLElement | null = this.closest('.accordion-item')
 		const body: HTMLElement | null = item!.querySelector('.accordion-item-body')
-		const header: HTMLElement | null = item!.querySelector(
-			'.accordion-item-header',
-		)
+		const header: HTMLElement | null = item!.querySelector('.accordion-item-header')
 
 		// Smooth scroll to header
 		header!.scrollIntoView({ behavior: 'smooth', block: 'start' })

@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion'
 import type { ComponentPropsWithoutRef } from 'react'
 
-export default function FramerInView({ className = '', children, ...rest }: ComponentPropsWithoutRef<'div'>) {
+export default function FramerInView({
+	className = '',
+	children,
+	...rest
+}: ComponentPropsWithoutRef<'div'>) {
 	return (
-		// @ts-ignore - Framer Motion type conflict with React onDrag
+		// @ts-expect-error - Framer Motion type conflict with React onDrag
 		<motion.div
 			className={className}
 			initial={{ opacity: 0, y: 20, scale: 0.98 }}

@@ -9,8 +9,7 @@ if (backToTopBtn) {
 		clearTimeout(scrollTimeout)
 		scrollTimeout = setTimeout(() => {
 			const { innerHeight }: { innerHeight: number } = window
-			const scrollTop: number =
-				document.body.scrollTop || document.documentElement.scrollTop
+			const scrollTop: number = document.body.scrollTop || document.documentElement.scrollTop
 			if (scrollTop > innerHeight / 2) {
 				backToTopBtn.classList.add('show')
 			} else {

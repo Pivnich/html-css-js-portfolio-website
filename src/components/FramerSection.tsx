@@ -7,7 +7,7 @@ export default function FramerSection({
 	...rest
 }: ComponentPropsWithoutRef<'section'>) {
 	return (
-		// @ts-ignore - Framer Motion type conflict with React onDrag
+		// @ts-expect-error - Framer Motion type conflict with React onDrag
 		<motion.section
 			className={className}
 			initial={{ opacity: 0, y: 24 }}
