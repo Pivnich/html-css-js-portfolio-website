@@ -8,37 +8,34 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
-  issues: write
-  repository-projects: write
-  id-token: write
+  contents: read
   pages: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    # env:
-    #   CI: 'true'
-      
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v4
-        
-      # - name: Create CNAME file
-      #   run: echo "vulchyn.com" > ./CNAME
-      
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
+      - name: Checkout
+        uses: actions/checkout@v6
 
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
 
-      # - name: Install dependencies
-      #   run: npm ci
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -49,22 +46,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-
-
-
-
-      # - name: Build project
-      #   run: npm run build
-
-      # - name: Create CNAME file
-      #   run: echo "" > ./dist/CNAME
-
-      # - name: List build directory contents
-      #   run: ls -la ./dist
-
-      # - name: Deploy to GitHub Pages
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./dist
