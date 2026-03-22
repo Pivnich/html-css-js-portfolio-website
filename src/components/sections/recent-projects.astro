@@ -1,5 +1,9 @@
 ---
 import FramerSection from '../FramerSection.tsx'
+import OptimizedImage from '../OptimizedImage.astro'
+import externalLinkIcon from '../../assets/external-link.png'
+import arrowIcon from '../../assets/arrow.png'
+import { getOptimizedImage } from '../ImageAssets';
 const { title, subtitle, items } = Astro.props;
 ---
 <FramerSection client:load className="projects_2">
@@ -10,14 +14,14 @@ const { title, subtitle, items } = Astro.props;
 		{items.map((project: any) => (
 			<li class="card">
 				<div class="card-image modal-trigger" >
-					<img src={project.image_preview} alt="" />
+				<OptimizedImage src={getOptimizedImage(project.image_preview)} alt="" loading="lazy" decoding="async" loading="lazy" decoding="async" />
 				</div>
 				<div class="modal-inject">
 					<div class="modal-img">
-						<img data-src={project.image} class="lazyload" />
-						<a class="open-original" href={project.image} target="_blank">
-							Open original
-							<img src="./assets/external-link.png" class="icon" alt="external link" />
+					<OptimizedImage src={getOptimizedImage(project.image_preview)} alt={project.title} decoding="async" loading="lazy" decoding="async" />
+					<a class="open-original" href={project.image} target="_blank">
+						Open original
+						<OptimizedImage src={externalLinkIcon} class="icon" alt="external link" width={16} height={16} />
 						</a>
 					</div>
 				</div>
@@ -31,7 +35,7 @@ const { title, subtitle, items } = Astro.props;
 						target="_blank"
 					>
 						{project.title}
-						<img src="./assets/external-link.png" class="icon" alt="External link" />
+						<OptimizedImage src={externalLinkIcon} class="icon" alt="External link" width={16} height={16} />
 					</a>) : (
 						<h3 class="card-link">{project.title}</h3>
 					)}
@@ -39,12 +43,12 @@ const { title, subtitle, items } = Astro.props;
 			</li>
 		))}
 	</ul>
-	<img
-		src="assets/arrow.png"
+	<OptimizedImage
+		src={arrowIcon}
 		alt="Arrow icon"
 		class="icon arrow"
 		onclick="location.href='#about'"
-		width="100%"
-		height="100%"
+		width={32}
+		height={32}
 	/>
 </FramerSection>

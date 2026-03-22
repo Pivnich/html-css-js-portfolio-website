@@ -22,6 +22,12 @@ const config = {
 	],
 	site: 'https://vulchyn.com',
 	base: '',
+	image: {
+		// Image optimization settings
+		service: {
+			entrypoint: 'astro/assets/services/sharp',
+		},
+	},
 	vite: {
 		// Enable Vite caching for faster rebuilds
 		build: {

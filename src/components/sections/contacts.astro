@@ -1,5 +1,9 @@
 ---
 import FramerSection from '../FramerSection.tsx'
+import OptimizedImage from '../OptimizedImage.astro'
+import telegramIcon from '../../assets/social/telegram.png'
+import linkedinIcon from '../../assets/social/linkedin.png'
+import behanceIcon from '../../assets/social/behance-logo-0DC7CB7635-seeklogo.com.png'
 const { title, email, telegram, linkedin, behance } = Astro.props;
 ---
 <FramerSection client:load className="contact">
@@ -21,11 +25,11 @@ const { title, email, telegram, linkedin, behance } = Astro.props;
 				target="_blank"
 				title="Telegram"
 			>
-				<img
-					src="assets/social/telegram.png"
+				<OptimizedImage
+					src={telegramIcon}
 					alt="Telegram"
-					width="100%"
-					height="100%"
+					width={32}
+					height={32}
 				/>
 			</a>
 			<a
@@ -34,11 +38,11 @@ const { title, email, telegram, linkedin, behance } = Astro.props;
 				target="_blank"
 				title="LinkedIn"
 			>
-				<img
-					src="assets/social/linkedin.png"
+				<OptimizedImage
+					src={linkedinIcon}
 					alt="Linkedin"
-					width="100%"
-					height="100%"
+					width={32}
+					height={32}
 				/>
 			</a>
 			<a
@@ -47,11 +51,11 @@ const { title, email, telegram, linkedin, behance } = Astro.props;
 				target="_blank"
 				title="Behance"
 			>
-				<img
-					src="assets/social/behance-logo-0DC7CB7635-seeklogo.com.png"
+				<OptimizedImage
+					src={behanceIcon}
 					alt="Behance"
-					width="100%"
-					height="100%"
+					width={32}
+					height={32}
 				/>
 			</a>
 		</div>

@@ -1,5 +1,7 @@
 ---
 import FramerSection from '../FramerSection.tsx'
+import OptimizedImage from '../OptimizedImage.astro'
+import closeIcon from '../../assets/selected-projects/icon-close.png'
 const { title, subtitle, items } = Astro.props;
 import { YouTube } from '@astro-community/astro-embed-youtube';
 ---
@@ -16,7 +18,7 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 					style={`background-image: url('${item.logo_bg || ''}'), url('assets/selected-projects/case-bg-${item.background}.webp')`}
 				>
 					<div class="accordion-item-title-logo">
-						<img src={item.logo} alt="logo" />
+						<OptimizedImage src={item.logo} alt="logo" loading="lazy" decoding="async" />
 					</div>
 					<div class="accordion-item-title">{item.title}</div>
 					<div class="accordion-header-gradient"></div>
@@ -37,13 +39,13 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 												muted
 												playsinline
 												controls
-											/>
+										/>
 										</div>
 									)
 								} else if (_item.includes('.jpg') || _item.includes('.png') || _item.includes('.jpeg')) {
 									return (
 										<div class="accordion-image">
-											<img src={_item} alt="media" />
+											<OptimizedImage src={_item} alt="media" loading="lazy" decoding="async" />
 										</div>
 									)
 								} else if (_item.split('').length) {
@@ -57,9 +59,11 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 						</div>
 					</div>
 					<div class="accordion-item-arrow">
-						<img
-							src="assets/selected-projects/icon-close.png"
+						<OptimizedImage
+							src={closeIcon}
 							alt="close-button"
+							width={24}
+							height={24}
 						/>
 					</div>
 				</div>

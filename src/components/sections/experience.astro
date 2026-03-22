@@ -1,5 +1,8 @@
 ---
 import FramerSection from '../FramerSection.tsx'
+import OptimizedImage from '../OptimizedImage.astro'
+import checkmarkIcon from '../../assets/checkmark.png'
+import arrowIcon from '../../assets/arrow.png'
 const { title, subtitle, lists } = Astro.props;
 ---
 <FramerSection client:load className="experience">
@@ -14,12 +17,12 @@ const { title, subtitle, lists } = Astro.props;
 					<ul class="article-container">
 						{list.skills.map((skill: {title: string; subtitle: string}) => (
 							<li>
-								<img
-									src="assets/checkmark.png"
+								<OptimizedImage
+									src={checkmarkIcon}
 									alt="Experience icon"
 									class="icon"
-									width="100%"
-									height="100%"
+									width={24}
+									height={24}
 								/>
 								<div>
 									<h3>{skill.title}</h3>
@@ -32,12 +35,12 @@ const { title, subtitle, lists } = Astro.props;
 			))}
 		</div>
 	</div>
-	<img
-		src="assets/arrow.png"
+	<OptimizedImage
+		src={arrowIcon}
 		alt="Arrow icon"
 		class="icon arrow"
 		onclick="location.href='#contact'"
-		width="100%"
-		height="100%"
+		width={32}
+		height={32}
 	/>
 </FramerSection>

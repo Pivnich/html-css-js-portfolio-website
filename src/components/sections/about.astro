@@ -1,5 +1,10 @@
 ---
 import FramerSection from '../FramerSection.tsx'
+import OptimizedImage from '../OptimizedImage.astro'
+import experienceIcon from '../../assets/experience.png'
+import educationIcon from '../../assets/education.png'
+import arrowIcon from '../../assets/arrow.png'
+import { getOptimizedImage } from '../ImageAssets'
 const { title, subtitle, about } = Astro.props;
 ---
 <FramerSection client:load className="about">
@@ -8,22 +13,20 @@ const { title, subtitle, about } = Astro.props;
 	<h2 class="title">{title}</h2>
 	<div class="section-container">
 		<div class="section__pic-container">
-			<img
-				src={about.image}
+			<OptimizedImage
+				src={getOptimizedImage(about.image)}
 				alt="Profile picture"
-				width="100%"
-				height="100%"
-			/>
+			loading="lazy" decoding="async" />
 		</div>
 		<div class="about-details-container">
 			<div class="about-containers">
 				{about.experience.length && (<div class="details-container">
-					<img
-						src="assets/experience.png"
+					<OptimizedImage
+						src={experienceIcon}
 						alt="experience icon"
 						class="icon"
-						width="100%"
-						height="100%"
+						width={32}
+						height={32}
 					/>
 					<h3>Experience</h3>
 					{about.experience.map((item: string) => (
@@ -31,12 +34,12 @@ const { title, subtitle, about } = Astro.props;
 					))}
 				</div>)}
 				{about.education.length && (<div class="details-container">
-					<img
-						src="assets/education.png"
+					<OptimizedImage
+						src={educationIcon}
 						alt="education icon"
 						class="icon"
-						width="100%"
-						height="100%"
+						width={32}
+						height={32}
 					/>
 					<h3>Education</h3>
 					{about.education.map((item: string) => (
@@ -49,12 +52,12 @@ const { title, subtitle, about } = Astro.props;
 			</div>
 		</div>
 	</div>
-	<img
-		src="assets/arrow.png"
+	<OptimizedImage
+		src={arrowIcon}
 		alt="Arrow icon"
 		class="icon arrow"
 		onclick="location.href='#experience'"
-		width="100%"
-		height="100%"
+		width={32}
+		height={32}
 	/>
 </FramerSection>

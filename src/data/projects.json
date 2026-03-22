@@ -88,7 +88,7 @@
         },
         {
           "title": "TEA Crypto Social Content design",
-          "image_preview": "assets/tea_prev.webp",
+          "image_preview": "./assets/tea_prev.webp",
           "image": "./assets/tea.jpg",
           "skills": ["Figma", "Adobe Photoshop", "DALL-E 3"]
         },
