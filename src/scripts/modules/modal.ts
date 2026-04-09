@@ -5,13 +5,14 @@ const modalBackdrop: HTMLElement | null = document.querySelector('.backdrop')
 
 // Toggle modal
 function toggleModal(): void {
-	const modal: HTMLElement | null = document.querySelector('.modal')
-	if (modal) modal.classList.toggle('active')
+	const modal: HTMLElement | null = document.getElementById('modal')
+	if (modal) modal.classList.toggle('open')
 }
 
 // Set modal content
 function setModalContent(content: string): void {
-	const modalBody: HTMLElement | null = document.querySelector('.modal-body')
+	const modalBody: HTMLElement | null = document.querySelector('.modal-content')
+
 	if (modalBody) modalBody.innerHTML = content
 }
 
