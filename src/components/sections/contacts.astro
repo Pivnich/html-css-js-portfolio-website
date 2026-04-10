@@ -1,58 +1,30 @@
 ---
-const { title, email, telegram, linkedin, behance } = Astro.props;
+import FramerSection from '../FramerSection.tsx'
+import OptimizedImage from '../OptimizedImage.astro'
+import telegramIcon from '../../assets/social/telegram.png'
+import linkedinIcon from '../../assets/social/linkedin.png'
+import behanceIcon from '../../assets/social/behance-logo-0DC7CB7635-seeklogo.com.png'
+const { title, email, telegram, linkedin, behance } = Astro.props
 ---
-<section class="contact" data-aos="fade-up" data-aos-offset="150">
+
+<FramerSection client:load className="contact">
 	<div id="contact" class="anchor"></div>
 
 	<div class="container">
 		<h2>{title}</h2>
-		<a
-			href={`mailto:${email}`}
-			target="_blank"
-			class="email"
-		>
+		<a href={`mailto:${email}`} target="_blank" class="email">
 			{email}
 		</a>
 		<div class="social-icons">
-			<a
-				class="icon"
-				href={telegram}
-				target="_blank"
-				title="Telegram"
-			>
-				<img
-					src="assets/social/telegram.png"
-					alt="Telegram"
-					width="100%"
-					height="100%"
-				/>
+			<a class="icon" href={telegram} target="_blank" title="Telegram">
+				<OptimizedImage src={telegramIcon} alt="Telegram" width={32} height={32} />
 			</a>
-			<a
-				class="icon"
-				href={linkedin}
-				target="_blank"
-				title="LinkedIn"
-			>
-				<img
-					src="assets/social/linkedin.png"
-					alt="Linkedin"
-					width="100%"
-					height="100%"
-				/>
+			<a class="icon" href={linkedin} target="_blank" title="LinkedIn">
+				<OptimizedImage src={linkedinIcon} alt="Linkedin" width={32} height={32} />
 			</a>
-			<a
-				class="icon"
-				href={behance}
-				target="_blank"
-				title="Behance"
-			>
-				<img
-					src="assets/social/behance-logo-0DC7CB7635-seeklogo.com.png"
-					alt="Behance"
-					width="100%"
-					height="100%"
-				/>
+			<a class="icon" href={behance} target="_blank" title="Behance">
+				<OptimizedImage src={behanceIcon} alt="Behance" width={32} height={32} />
 			</a>
 		</div>
 	</div>
-</section>
+</FramerSection>

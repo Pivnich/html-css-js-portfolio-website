@@ -1,9 +1,8 @@
-<button id="backToTop" onclick="topFunction()">
-	<img
-		src="./assets/arrow.png"
-		alt="Arrow icon"
-		class="icon"
-		width="100%"
-		height="100%"
-	/>
+---
+import OptimizedImage from './OptimizedImage.astro'
+import arrowIcon from '../assets/arrow.png'
+---
+
+<button id="backToTop">
+	<OptimizedImage src={arrowIcon} alt="Arrow icon" class="icon" loading="eager" />
 </button>

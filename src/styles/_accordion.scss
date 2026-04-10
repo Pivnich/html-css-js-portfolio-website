@@ -1,0 +1,226 @@
+/* Accordion styles */
+
+.accordion-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+
+	@media screen and (max-width: 1024px) {
+		gap: 20px;
+	}
+}
+
+.accordion-item {
+	display: flex;
+	flex-direction: column;
+}
+
+.accordion-item-header {
+	position: relative;
+	background-color: #ccc;
+	padding-left: 48px;
+	height: 110px;
+	border-radius: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	overflow: hidden;
+	background-size: 435px, contain;
+	background-position: left, center;
+	background-repeat: no-repeat, repeat-y;
+
+	transition:
+		border-radius 0.35s ease 0.1s,
+		filter 0.35s ease;
+
+	@media screen and (max-width: 1024px) {
+		padding-left: 24px;
+		height: 90px;
+		background-size:
+			340px 90px,
+			contain;
+	}
+	@media screen and (max-width: 840px) {
+		height: 80px;
+		background-size:
+			300px 90px,
+			contain;
+	}
+}
+
+.accordion-header-gradient {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 10%, rgba(43, 43, 43, 1) 100%);
+
+	opacity: 0;
+
+	transition: opacity 0.35s ease;
+}
+
+.accordion-item {
+	.accordion-media {
+		video {
+			display: none;
+		}
+	}
+	&.active {
+		.accordion-media {
+			video {
+				display: block;
+			}
+		}
+		.accordion-header-gradient {
+			opacity: 1;
+		}
+		.accordion-item-header {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+
+			transition: filter 0.35s ease;
+		}
+		.accordion-item-body {
+			transition-delay: unset;
+			transition: max-height 2s ease-out;
+		}
+	}
+}
+
+.accordion-item-header:hover {
+	filter: grayscale(1);
+	cursor: pointer;
+}
+
+.accordion-item-title {
+	color: #1e1e1e;
+	font-weight: 700;
+	font-size: 46px;
+	padding-right: 94px;
+
+	@media screen and (max-width: 1280px) {
+		font-size: 32px;
+		padding-right: 64px;
+	}
+	@media screen and (max-width: 1024px) {
+		padding-right: 24px;
+	}
+	@media screen and (max-width: 840px) {
+		font-size: 28px;
+		text-align: right;
+		padding-left: 16px;
+		line-height: 32px;
+	}
+	@media screen and (max-width: 640px) {
+		font-size: 18px;
+		text-align: right;
+		padding-left: 8px;
+		line-height: 22px;
+	}
+}
+
+.accordion-item-title-logo {
+	max-width: 303px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-items: center;
+	padding: 20px 0;
+
+	img {
+		object-fit: contain;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	@media screen and (max-width: 840px) {
+		max-width: 150px;
+	}
+	@media screen and (max-width: 640px) {
+		padding: 8px 0;
+	}
+}
+
+.accordion-item-body {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.35s ease-out;
+	transition-delay: unset;
+}
+
+.accordion-item-body-content {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	padding: 48px (calc(calc(100% - 1100px) / 2)) 120px (calc(calc(100% - 1100px) / 2));
+	font-weight: 600;
+	font-size: 24px;
+	text-align: justify;
+	border-bottom-left-radius: 24px;
+	border-bottom-right-radius: 24px;
+
+	background-color: #2b2b2b;
+
+	@media screen and (max-width: 1490px) {
+		padding-left: 48px;
+		padding-right: 48px;
+	}
+	@media screen and (max-width: 840px) {
+		padding-top: 32px;
+		gap: 24px;
+		padding-bottom: 48px;
+		font-size: 20px;
+	}
+	@media screen and (max-width: 640px) {
+		padding: 20px 16px 16px 16px;
+	}
+}
+
+.accordion-media {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	justify-self: center;
+}
+
+.accordion-video {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	max-width: 1100px;
+	height: 630px;
+	border-radius: 24px;
+	overflow: hidden;
+
+	video {
+		max-width: 100%;
+		max-height: 100%;
+		border-radius: 24px;
+	}
+
+	@media screen and (max-width: 1200px) {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.accordion-item-arrow {
+	text-align: center;
+	margin-top: 18px;
+	&:hover {
+		opacity: 0.75;
+		transition: opacity 0.35s ease;
+		cursor: pointer;
+	}
+
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	@media screen and (max-width: 840px) {
+		height: 24px;
+	}
+}

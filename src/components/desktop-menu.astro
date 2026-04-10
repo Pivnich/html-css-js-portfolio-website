@@ -1,14 +1,17 @@
-<nav id="desktop-nav" data-aos="fade-bottom" data-aos-duration="2000">
-	<div class="logo">
-		Maksym Vulchyn
-	</div>
-	<div>
-		<ul class="nav-links">
-			<li><a href="#about">About</a></li>
-			<li><a href="#experience">Skills</a></li>
-			<li><a href="#projects">Projects</a></li>
-			<li><a href="#contact">Contact</a></li>
-			<!-- <li>
+---
+import FramerInView from './FramerInView.tsx'
+---
+
+<FramerInView client:load className="desktop-nav-wrapper">
+	<nav id="desktop-nav">
+		<div class="logo">Maksym Vulchyn</div>
+		<div>
+			<ul class="nav-links">
+				<li><a href="#about">About</a></li>
+				<li><a href="#experience">Skills</a></li>
+				<li><a href="#projects">Projects</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<!-- <li>
 				<button
 					title="Toggle Theme"
 					type="button"
@@ -20,9 +23,10 @@
 						height="100%"
 						src="assets/brightness.png"
 						alt="theme"
-					/>
+					loading="lazy" decoding="async" />
 				</button>
 			</li> -->
-		</ul>
-	</div>
-</nav>
+			</ul>
+		</div>
+	</nav>
+</FramerInView>

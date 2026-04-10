@@ -19,62 +19,56 @@ import data from '../data/projects.json'
 	<DesktopMenu />
 	<MobileMenu />
 	<ProfileSection />
-	{data.sections.map((section) => {
-		switch (section.type) {
-			case 'accordion':
-				return (
-					<SelectedProjectsSection
-						title={section.title}
-						subtitle={section.subtitle}
-						items={section.items}
-					/>
-			)
-			case 'sliders':
-				return (
-					<ProjectsSection
+	{
+		data.sections.map(section => {
+			switch (section.type) {
+				case 'accordion':
+					return (
+						<SelectedProjectsSection
+							title={section.title}
+							subtitle={section.subtitle}
 							items={section.items}
-					/>
-			)
-			case 'projects':
-				return (
-					<RecentProjectsSection
-						title={section.title}
-						subtitle={section.subtitle}
-						items={section.projects}
-					/>
-			)
-			case 'about':
-				return (
-					<AboutSection
-						title={section.title}
-						subtitle={section.subtitle}
-						about={section.about}
-					/>
-			)
-			case 'checkmarks-list':
-				return (
-					<ExperienceSection
-						title={section.title}
-						subtitle={section.subtitle}
-						lists={section.lists}
-					/>
-			)
-			case 'footer-contacts':
-				return (
-					<ContactsSection
-						title={section.title}
-						email={section.email}
-						telegram={section.telegram}
-						linkedin={section.linkedin}
-						behance={section.behance}
-					/>
-			)
-		}
-	})}
+						/>
+					)
+				case 'sliders':
+					return <ProjectsSection items={section.items} />
+				case 'projects':
+					return (
+						<RecentProjectsSection
+							title={section.title}
+							subtitle={section.subtitle}
+							items={section.projects}
+						/>
+					)
+				case 'about':
+					return (
+						<AboutSection title={section.title} subtitle={section.subtitle} about={section.about} />
+					)
+				case 'checkmarks-list':
+					return (
+						<ExperienceSection
+							title={section.title}
+							subtitle={section.subtitle}
+							lists={section.lists}
+						/>
+					)
+				case 'footer-contacts':
+					return (
+						<ContactsSection
+							title={section.title}
+							email={section.email}
+							telegram={section.telegram}
+							linkedin={section.linkedin}
+							behance={section.behance}
+						/>
+					)
+			}
+		})
+	}
 	<Modal />
 	<BackToTop />
 </BaseLayout>
 
 <script>
-import '../scripts/main.js'
+	import '../scripts/main.ts'
 </script>

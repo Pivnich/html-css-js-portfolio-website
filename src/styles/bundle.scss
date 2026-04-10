@@ -1,2 +1,13 @@
-@import url('./globals.scss');
-// @import url('./swiper.scss');
+// Variables and global styles
+@use './variables' as *;
+@use './global' as *;
+
+// Component styles
+@use './buttons' as *;
+@use './navigation' as *;
+@use './modal' as *;
+@use './back-to-top' as *;
+@use './accordion' as *;
+
+// Main layout styles
+@use './globals' as *;

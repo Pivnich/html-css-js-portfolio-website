@@ -1,0 +1,58 @@
+---
+// OptimizedImage.astro - Component for optimized image handling
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+
+interface Props {
+	src: string | ImageMetadata
+	alt: string
+	width?: number
+	height?: number
+	class?: string
+	loading?: 'lazy' | 'eager'
+	decoding?: 'auto' | 'sync' | 'async'
+	onclick?: string
+}
+
+const {
+	src,
+	alt,
+	width,
+	height,
+	class: className,
+	loading = 'lazy',
+	decoding = 'async',
+	onclick,
+} = Astro.props
+
+// Check if src is a local image (ImageMetadata) or external URL
+const isLocalImage = typeof src === 'object' && src !== null && 'src' in src
+
+// For local images without onclick, use Astro Image component for optimization
+const useAstroImage = isLocalImage && !onclick
+---
+
+{
+	useAstroImage ? (
+		<Image
+			src={src as ImageMetadata}
+			alt={alt}
+			class={className}
+			loading={loading}
+			decoding={decoding}
+			width={width}
+			height={height}
+		/>
+	) : (
+		<img
+			src={isLocalImage ? (src as ImageMetadata).src : (src as string)}
+			alt={alt}
+			class={className}
+			loading={loading}
+			decoding={decoding}
+			width={width}
+			height={height}
+			onclick={onclick}
+		/>
+	)
+}

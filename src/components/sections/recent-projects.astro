@@ -1,49 +1,82 @@
 ---
-const { title, subtitle, items } = Astro.props;
+import FramerSection from '../FramerSection.tsx'
+import OptimizedImage from '../OptimizedImage.astro'
+import externalLinkIcon from '../../assets/external-link.png'
+import arrowIcon from '../../assets/arrow.png'
+import { getOptimizedImage } from '../ImageAssets'
+const { title, subtitle, items } = Astro.props
 ---
-<section class="projects_2" data-aos="fade-up" data-aos-offset="150">
+
+<FramerSection client:load className="projects_2">
 	<div id="projects_2" class="anchor"></div>
 	<p class="section__text__p1">{subtitle}</p>
 	<h2>{title}</h2>
 	<ul class="projects-list">
-		{items.map((project: any) => (
-			<li class="card">
-				<div class="card-image modal-trigger" >
-					<img src={project.image_preview} alt="" />
-				</div>
-				<div class="modal-inject">
-					<div class="modal-img">
-						<img data-src={project.image} class="lazyload" />
-						<a class="open-original" href={project.image} target="_blank">
-							Open original
-							<img src="./assets/external-link.png" class="icon" alt="external link" />
-						</a>
+		{
+			items.map((project: any) => (
+				<li class="card">
+					<div class="card-image modal-trigger">
+						<OptimizedImage
+							src={getOptimizedImage(project.image_preview)}
+							alt=""
+							loading="lazy"
+							decoding="async"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
-				</div>
-				<div class="card-footer">
-					<ul class="badges">
-						{project.skills.map((skill: string) => <li>{skill}</li>)}
-					</ul>
-					{project.link ? (<a
-						class="card-link"
-						href={project.link}
-						target="_blank"
-					>
-						{project.title}
-						<img src="./assets/external-link.png" class="icon" alt="External link" />
-					</a>) : (
-						<h3 class="card-link">{project.title}</h3>
-					)}
-				</div>
-			</li>
-		))}
+					<div class="modal-inject">
+						<div class="modal-img">
+							<OptimizedImage
+								src={getOptimizedImage(project.image)}
+								alt={project.title}
+								decoding="async"
+								loading="lazy"
+								decoding="async"
+							/>
+							<a class="open-original" href={project.image} target="_blank">
+								Open original
+								<OptimizedImage
+									src={externalLinkIcon}
+									class="icon"
+									alt="external link"
+									width={16}
+									height={16}
+								/>
+							</a>
+						</div>
+					</div>
+					<div class="card-footer">
+						<ul class="badges">
+							{project.skills.map((skill: string) => (
+								<li>{skill}</li>
+							))}
+						</ul>
+						{project.link ? (
+							<a class="card-link" href={project.link} target="_blank">
+								{project.title}
+								<OptimizedImage
+									src={externalLinkIcon}
+									class="icon"
+									alt="External link"
+									width={16}
+									height={16}
+								/>
+							</a>
+						) : (
+							<h3 class="card-link">{project.title}</h3>
+						)}
+					</div>
+				</li>
+			))
+		}
 	</ul>
-	<img
-		src="assets/arrow.png"
+	<OptimizedImage
+		src={arrowIcon}
 		alt="Arrow icon"
 		class="icon arrow"
 		onclick="location.href='#about'"
-		width="100%"
-		height="100%"
+		width={32}
+		height={32}
 	/>
-</section>
+</FramerSection>
