@@ -8,7 +8,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	z-index: 1;
+	z-index: 2;
 
 	transition: opacity 0.5s ease;
 
@@ -36,6 +36,7 @@
 				position: absolute;
 				right: 0;
 				bottom: -1.7rem;
+				white-space: nowrap;
 				background: var(--main-bg-color);
 				text-decoration: none;
 				padding: 0 4px;

@@ -12,14 +12,14 @@ import { YouTube } from '@astro-community/astro-embed-youtube'
 	<h2>{title}</h2>
 	<div class="accordion-wrapper">
 		{
-			items?.map((item: any) => (
+			items?.map((item: any, index: number) => (
 				<div class="accordion-item">
 					<div
 						class="accordion-item-header"
 						style={`background-image: url('${item.logo_bg || ''}'), url('assets/selected-projects/case-bg-${item.background}.webp')`}
 					>
 						<div class="accordion-item-title-logo">
-							<OptimizedImage src={item.logo} alt="logo" loading="lazy" decoding="async" />
+							<OptimizedImage src={item.logo} alt="logo" loading={index === 0 ? 'eager' : 'lazy'} />
 						</div>
 						<div class="accordion-item-title">{item.title}</div>
 						<div class="accordion-header-gradient" />
@@ -64,7 +64,7 @@ import { YouTube } from '@astro-community/astro-embed-youtube'
 							</div>
 						</div>
 						<div class="accordion-item-arrow">
-							<OptimizedImage src={closeIcon} alt="close-button" width={24} height={24} />
+							<OptimizedImage src={closeIcon} alt="close-button" width={98} height={24} />
 						</div>
 					</div>
 				</div>
